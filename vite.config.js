@@ -1,9 +1,24 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import { reactRouter } from '@react-router/dev/vite'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const firebaseEsm = (subpath) =>
+  path.resolve(__dirname, `node_modules/firebase/${subpath}/dist/esm/index.esm.js`)
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [reactRouter()],
+  resolve: {
+    alias: {
+      // firebase@11.9.x ships dist/index.mjs missing in this install; pin subpaths to ESM builds for SSR/prerender.
+      'firebase/analytics': firebaseEsm('analytics'),
+      'firebase/app': firebaseEsm('app'),
+      'firebase/app-check': firebaseEsm('app-check'),
+      'firebase/firestore': firebaseEsm('firestore'),
+    },
+  },
   optimizeDeps: {
     // Pre-bundle every runtime dependency at dev-server start. Several are only
     // reached lazily (dynamic imports, route-specific pages); if Vite discovers them
