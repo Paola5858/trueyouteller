@@ -22,9 +22,9 @@ const QuizCard = ({ quiz, headingLevel = 'h3' }) => {
         <Heading className="quiz-card-title">{quiz.title}</Heading>
         <p>{quiz.description}</p>
         <span className="quiz-card-meta">
-          {quiz.questions.length} questions · {Object.keys(quiz.outcomes).length} results
+          {quiz.questions.length} perguntas  {Object.keys(quiz.outcomes).length} resultados
         </span>
-        <span className="btn btn-primary quiz-card-cta">Start quiz</span>
+        <span className="btn btn-primary quiz-card-cta">comear</span>
       </div>
     </Link>
   );

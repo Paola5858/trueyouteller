@@ -24,8 +24,8 @@ const teamMembers = [
 
 export const meta = () =>
   buildMeta({
-    title: 'About TrueYouTeller - Our Story and Mission',
-    description: 'Learn about the story and mission behind TrueYouTeller, the free and fun 16-type personality test. Meet the team helping you discover your true self.',
+    title: 'sobre o TrueYouTeller: nossa histria e propsito',
+    description: 'conhea a histria do TrueYouTeller e das pessoas que criaram este teste gratuito de personalidade.',
     path: '/about',
   });
 
@@ -33,21 +33,21 @@ const AboutUsPage = () => {
   return (
     <div className="about-us-container container section">
       <div className="about-us-content">
-        <h1 className="page-title">About TrueYouTeller</h1>
+        <h1 className="page-title">sobre o TrueYouTeller</h1>
         <p>
-          Welcome to TrueYouTeller, your magical guide to self-discovery! We believe that understanding your personality is the first step towards a more authentic and fulfilling life. Our fun and insightful personality test is designed to reveal the unique traits that make you, you.
+          o TrueYouTeller nasceu da curiosidade sobre o que faz cada pessoa ser nica. criamos este teste para ajudar voc a olhar para seus hbitos e preferências de um jeito leve, sem transformar um perfil em uma definio de quem voc .
         </p>
         <p>
-          Our mission is to blend a little bit of magic with psychology to create an enjoyable experience for everyone. We're not your typical, boring personality quiz. We've crafted each question to be engaging and thought-provoking, leading you on a journey to uncover your true self.
+          nossa ideia  juntar perguntas que fazem pensar com uma experincia divertida e acessvel. o resultado serve como ponto de partida para conversar e refletir, não como uma resposta definitiva sobre sua personalidade.
         </p>
-        <h3>Our Vision</h3>
+        <h3>o que queremos</h3>
         <p>
-          We envision a world where everyone understands and embraces their individuality. We hope our little corner of the internet can bring a smile to your face and a little more clarity to your path. So go ahead, gaze into the crystal ball and see what it has to say about you!
+          queremos que este cantinho da internet ajude voc a celebrar suas diferenas e talvez enxergar algo novo sobre si. esperamos que a experincia traga uma boa conversa, uma ideia interessante ou pelo menos um sorriso.
         </p>
       </div>
 
       <div className="team-section">
-        <h2>Meet the Team</h2>
+        <h2>quem fez o projeto</h2>
         <div className="team-members-container">
           {teamMembers.map((member, index) => (
             <TeamMemberCard

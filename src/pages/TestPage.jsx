@@ -14,16 +14,16 @@ import '../styles/Quiz.css';
 
 export const meta = () =>
   buildMeta({
-    title: 'Take the Free Personality Test (48 Questions) | TrueYouTeller',
+    title: 'faa o teste de personalidade grátis | TrueYouTeller',
     description:
-      'Start the free TrueYouTeller personality test. Rate 48 fun statements and discover your 16-type personality and spirit animal in about 10 minutes. No sign-up needed.',
+      'responda 48 frases e descubra qual dos 16 perfis de personalidade combina mais com você. grátis, sem cadastro e em cerca de 10 minutos.',
     path: '/test',
     jsonLd: [
       {
         '@context': 'https://schema.org',
         '@type': 'Quiz',
-        name: 'TrueYouTeller Free Personality Test',
-        about: '16 personality types',
+        name: 'teste de personalidade grátis TrueYouTeller',
+        about: '16 tipos de personalidade',
         educationalUse: 'self-assessment',
         url: `${SITE_URL}/test`,
         isAccessibleForFree: true,
@@ -36,10 +36,10 @@ const SECONDS_PER_QUESTION = 12;
 
 // Shown on the question after each milestone.
 const CHEERS = {
-  10: '🎉 10 down! The crystal ball is warming up…',
-  20: "✨ 20 done! You're on a roll.",
-  30: '🔮 30! Your personality is starting to glow.',
-  40: '🚀 40! Almost there, just a few more.',
+  10: '🎉 10 respostas! a bola de cristal est esquentando',
+  20: '✨ 20 respostas! voc est indo muito bem.',
+  30: '🔮 30! seu perfil est comeando a aparecer.',
+  40: '🚀 40! falta pouco, s mais algumas.',
 };
 
 const cuteNames = ["pookie", "pingu", "mogumogu", "peekaboo", "bubbles", "mochi", "pompom", "booplet", "snugglebug",
@@ -62,22 +62,21 @@ const MODES = {
     questions: classicQuestions,
     version: QUESTION_VERSION,
     unit: 'statements',
-    title: 'Classic',
-    blurb: `${classicQuestions.length} statements · ~10 min`,
+    title: 'clssico',
+    blurb: `${classicQuestions.length} frases  ~10 min`,
     optionsFor: () => answerOptions,
   },
   scenario: {
     id: 'scenario',
     questions: scenarios,
     version: SCENARIO_VERSION,
-    unit: 'situations',
-    title: 'Scenario',
-    blurb: `${scenarios.length} real-life situations · ~5 min`,
+    unit: 'situaes',
+    title: 'situaes',
+    blurb: `${scenarios.length} situaes do dia a dia  ~5 min`,
     optionsFor: (question) => question.options,
   },
 };
 
-const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 const emptyAnswers = (config) => Array(config.questions.length).fill(null);
 const optionLabel = (config, index, value) =>
   config.optionsFor(config.questions[index]).find((option) => option.value === value)?.text;
@@ -132,13 +131,13 @@ const TestPage = () => {
   };
 
   const generateRandomName = () => {
-    setName(capitalize(cuteNames[Math.floor(Math.random() * cuteNames.length)]));
+    setName(cuteNames[Math.floor(Math.random() * cuteNames.length)]);
   };
 
   const handleNameSubmit = (e) => {
     e.preventDefault();
     if (name.trim()) {
-      setName(capitalize(name.trim()));
+      setName(name.trim().toLocaleLowerCase('pt-BR'));
       setAnswers(emptyAnswers(config));
       setCurrentQuestionIndex(0);
       setStep('questions');
@@ -216,32 +215,32 @@ const TestPage = () => {
     return (
       <div className="test-container container section">
         <div className="test-card">
-          <h1 className="welcome-heading">Free Personality Test</h1>
+          <h1 className="welcome-heading">teste de personalidade</h1>
           {invite && (
             <p className="invite-banner">
-              💌 {invite.name || 'A friend'} ({invite.type}) invited you! Finish the test to see how compatible you are.
+              💌 {invite.name || 'uma pessoa amiga'} ({invite.type}) convidou você! termine o teste para comparar os perfis.
             </p>
           )}
           {savedProgress ? (
             <div className="resume-box">
               <p className="welcome-subheading">
-                Welcome back, <strong>{savedProgress.name}</strong>! You answered{' '}
+                que bom ter voc de volta, <strong>{savedProgress.name}</strong>! voc respondeu{' '}
                 {savedProgress.answers.filter((answer) => answer !== null).length} of {savedProgress.answers.length}{' '}
                 {(MODES[savedProgress.mode] ?? MODES.classic).unit}.
               </p>
               <div className="resume-buttons">
                 <button type="button" className="btn btn-primary" onClick={resumeTest}>
-                  Resume my test
+                  continuar de onde parei
                 </button>
                 <button type="button" className="btn" onClick={startOver}>
-                  Start over
+                  recomear
                 </button>
               </div>
             </div>
           ) : (
             <>
-              <p className="welcome-subheading">Free · no sign-up · pick a style, then enter a name or nickname.</p>
-              <div className="mode-picker" role="radiogroup" aria-label="Test style">
+              <p className="welcome-subheading">grátis e sem cadastro. escolha um jeito de responder e informe um nome ou apelido.</p>
+              <div className="mode-picker" role="radiogroup" aria-label="formato do teste">
                 {Object.values(MODES).map((mode) => (
                   <button
                     key={mode.id}
@@ -258,26 +257,27 @@ const TestPage = () => {
               </div>
               <form onSubmit={handleNameSubmit} className="name-form">
                 <div className="name-input-container">
-                  <label htmlFor="test-name" className="visually-hidden">Your name or nickname</label>
+                  <label htmlFor="test-name" className="visually-hidden">seu nome ou apelido</label>
                   <input
                     id="test-name"
                     type="text"
                     maxLength={40}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your name"
+                    placeholder="como podemos chamar você?"
                     className="name-input"
                   />
                   <button type="button" onClick={generateRandomName} className="btn random-name-btn">
-                    Generate Random Name
+                    sugerir um apelido
                   </button>
                 </div>
                 <button type="submit" className="btn start-btn" disabled={!name.trim()}>
-                  Start Test
+                  comear o teste
                 </button>
               </form>
               <p className="privacy-note">
-                Your name and answers are saved to improve the test. See our <Link to="/privacy">privacy policy</Link>.
+                seu nome e suas respostas ficam salvos para mostrar seu resultado. leia nossa{' '}
+                <Link to="/privacy">poltica de privacidade</Link>.
               </p>
             </>
           )}
@@ -292,16 +292,16 @@ const TestPage = () => {
     return (
       <div className="test-container container section">
         <div className="test-card">
-          <h1 className="welcome-heading">All done, {name}! 🎉</h1>
+          <h1 className="welcome-heading">pronto, {name}! 🎉</h1>
           <p className="welcome-subheading">
-            You've answered all {questions.length} {config.unit}. Ready to see what the crystal ball says?
+            voc respondeu às {questions.length} {config.unit}. quer ver o que a bola de cristal revela?
           </p>
           <div className="resume-buttons">
             <button type="button" className="btn btn-primary reveal-btn" onClick={revealResult}>
-              🔮 Reveal my personality
+              🔮 ver meu resultado
             </button>
             <button type="button" className="btn" onClick={() => setShowAnswers(!showAnswers)} aria-expanded={showAnswers}>
-              {showAnswers ? 'Hide my answers' : 'Review my answers'}
+              {showAnswers ? 'esconder respostas' : 'revisar respostas'}
             </button>
           </div>
           {showAnswers && (
@@ -331,11 +331,11 @@ const TestPage = () => {
   return (
     <div className="test-container container section">
       <div className="test-card">
-        <h1 className="visually-hidden">Free Personality Test</h1>
+        <h1 className="visually-hidden">teste de personalidade</h1>
         <div
           className="progress-bar-container"
           role="progressbar"
-          aria-label="Test progress"
+          aria-label="progresso do teste"
           aria-valuemin={0}
           aria-valuemax={questions.length}
           aria-valuenow={answeredCount}
@@ -344,10 +344,10 @@ const TestPage = () => {
         </div>
         <div className="question-meta">
           <span className="statement-label">
-            {isScenario ? 'Situation' : 'Statement'} {currentQuestionIndex + 1}/{questions.length}
+            {isScenario ? 'situao' : 'frase'} {currentQuestionIndex + 1}/{questions.length}
           </span>
           <span className="time-left">
-            {minutesLeft > 0 ? `⏱ about ${minutesLeft} min left` : '⏱ last one!'}
+            {minutesLeft > 0 ? `⏱ faltam cerca de ${minutesLeft} min` : '⏱ ltima pergunta!'}
           </span>
         </div>
         {cheer && <p className="cheer" key={cheer}>{cheer}</p>}
@@ -356,7 +356,7 @@ const TestPage = () => {
           <p className="question-text" aria-live="polite">{currentQuestion.statement}</p>
         </div>
         {isScenario ? (
-          <div className="quiz-options" role="group" aria-label="What would you do?">
+          <div className="quiz-options" role="group" aria-label="o que voc faria?">
             {options.map((option, i) => (
               <button
                 key={option.text}
@@ -372,7 +372,7 @@ const TestPage = () => {
             ))}
           </div>
         ) : (
-          <div className="answer-section likert-scale" role="group" aria-label="Your answer">
+          <div className="answer-section likert-scale" role="group" aria-label="sua resposta">
             {options.map((option, i) => (
               <button
                 key={option.value}
@@ -386,14 +386,14 @@ const TestPage = () => {
             ))}
           </div>
         )}
-        <p className="keyboard-hint">Tip: press keys 1–{options.length} to answer, Backspace to go back.</p>
+        <p className="keyboard-hint">dica: use as teclas 1{options.length} para responder e backspace para voltar.</p>
         <div className="navigation-buttons">
           <button className="btn prev-btn" onClick={handlePrev} disabled={currentQuestionIndex === 0}>
-            ← Back
+            ? voltar
           </button>
           {answeredCount === questions.length && (
             <button className="btn btn-primary" onClick={() => setStep('review')}>
-              Done reviewing →
+              terminar reviso ?
             </button>
           )}
         </div>

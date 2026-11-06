@@ -18,7 +18,7 @@ export const links = () => [
 
 export function Layout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,22 +47,22 @@ export default function App() {
 }
 
 export function HydrateFallback() {
-  return <div className="container section page-loading" aria-busy="true">Loading…</div>;
+  return <div className="container section page-loading" aria-busy="true">carregando</div>;
 }
 
 export function ErrorBoundary({ error }) {
   const notFound = isRouteErrorResponse(error) && error.status === 404;
   return (
     <div className="container section error-page">
-      <title>{notFound ? 'Page Not Found | TrueYouTeller' : 'Something went wrong | TrueYouTeller'}</title>
+      <title>{notFound ? 'pgina não encontrada | TrueYouTeller' : 'algo deu errado | TrueYouTeller'}</title>
       <meta name="robots" content="noindex" />
-      <h1>{notFound ? 'Oops! This page wandered off 🔮' : 'Oops! Something went wrong'}</h1>
+      <h1>{notFound ? 'opa! esta pgina se perdeu 🔮' : 'opa! algo deu errado'}</h1>
       <p>
         {notFound
-          ? "The crystal ball couldn't find what you were looking for."
-          : 'Please refresh the page or head back home.'}
+          ? 'a bola de cristal não encontrou o que voc procurava.'
+          : 'atualize a pgina ou volte para o início.'}
       </p>
-      <Link to="/" className="btn btn-primary">Back to Home</Link>
+      <Link to="/" className="btn btn-primary">voltar ao início</Link>
     </div>
   );
 }

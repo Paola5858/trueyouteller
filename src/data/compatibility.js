@@ -21,7 +21,7 @@ const AXIS_COPY = {
   IE: {
     same: {
       E: {
-        title: 'Social butterflies together',
+        title: 'energia para compartilhar',
         strength: 'You both recharge around people, so plans, parties and adventures come easily.',
         friction: 'With two big talkers, someone needs to listen. Watch out for competing for the spotlight.',
         tip: 'Take turns choosing between a "go out" night and a slower "just us" night.',
@@ -34,7 +34,7 @@ const AXIS_COPY = {
       },
     },
     different: {
-      title: 'Energy balance',
+      title: 'equilíbrio de energia',
       strength: 'The extravert brings fresh experiences and the introvert brings depth and calm. You stretch each other in good ways.',
       friction: 'One wants to go out while the other wants to stay in, and that can feel like rejection if it isn\'t talked about.',
       tip: 'Agree on a "social budget" each week, and let the introvert leave parties early with no guilt.',
@@ -78,7 +78,7 @@ const AXIS_COPY = {
       },
     },
     different: {
-      title: 'Head and heart',
+      title: 'razão e sentimento',
       strength: 'One brings logic and the other brings empathy. Together your decisions are both smart and kind.',
       friction: 'Bluntness can feel cold to the feeler, and emotional reasoning can feel illogical to the thinker.',
       tip: 'The thinker softens delivery, and the feeler shares the reasons behind their feelings.',

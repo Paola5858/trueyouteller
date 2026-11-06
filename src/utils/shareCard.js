@@ -66,8 +66,8 @@ export const drawShareCard = async ({ type, name, breakdown }) => {
   ctx.textBaseline = 'alphabetic';
 
   ctx.fillStyle = NAVY;
-  fitText(ctx, name ? `${name} is` : 'Personality type', NUNITO_BOLD, 46, maxText);
-  ctx.fillText(name ? `${name} is` : 'Personality type', centerX, 330);
+  fitText(ctx, name ? `${name} é` : 'tipo de personalidade', NUNITO_BOLD, 46, maxText);
+  ctx.fillText(name ? `${name} é` : 'tipo de personalidade', centerX, 330);
 
   ctx.fillStyle = PURPLE;
   ctx.font = `200px ${CHEWY.name}`;
@@ -96,8 +96,8 @@ export const drawShareCard = async ({ type, name, breakdown }) => {
   ctx.stroke();
 
   ctx.fillStyle = NAVY;
-  fitText(ctx, `Spirit animal: ${type.spiritAnimal}`, NUNITO_BOLD, 42, maxText);
-  ctx.fillText(`Spirit animal: ${type.spiritAnimal}`, centerX, 1060);
+  fitText(ctx, `animal simbólico: ${type.spiritAnimal}`, NUNITO_BOLD, 42, maxText);
+  ctx.fillText(`animal simbólico: ${type.spiritAnimal}`, centerX, 1060);
 
   if (breakdown) {
     const pillWidth = 210;
@@ -114,8 +114,8 @@ export const drawShareCard = async ({ type, name, breakdown }) => {
   }
 
   ctx.fillStyle = ORANGE;
-  fitText(ctx, "What's your type? → www.trueyouteller.com", NUNITO_BOLD, 40, maxText);
-  ctx.fillText("What's your type? → www.trueyouteller.com", centerX, 1280);
+  fitText(ctx, "qual é o seu tipo? · www.trueyouteller.com", NUNITO_BOLD, 40, maxText);
+  ctx.fillText("qual é o seu tipo? · www.trueyouteller.com", centerX, 1280);
 
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
 };

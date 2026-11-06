@@ -35,43 +35,43 @@ const JoinPanel = ({ label, returnPath, onJoin, busy }) => {
         if (canJoin) onJoin({ name: name.trim().slice(0, 30), type });
       }}
     >
-      <label htmlFor="join-name">Your name</label>
-      <input id="join-name" value={name} maxLength={30} onChange={(e) => setName(e.target.value)} placeholder="Your name" />
+      <label htmlFor="join-name">seu nome</label>
+      <input id="join-name" value={name} maxLength={30} onChange={(e) => setName(e.target.value)} placeholder="como podemos chamar você?" />
 
       {last?.type && !manual ? (
         <p className="join-type">
-          Joining as <strong>{last.type}</strong> ({PERSONALITY_TYPES[last.type].name}), from your last test.{' '}
+          entrando como <strong>{last.type}</strong> ({PERSONALITY_TYPES[last.type].name}), do seu ltimo teste.{' '}
           <button type="button" className="link-button" onClick={() => setManual(true)}>
-            Use a different type
+            escolher outro tipo
           </button>
         </p>
       ) : manual ? (
         <>
-          <label htmlFor="join-type">Your type</label>
+          <label htmlFor="join-type">seu tipo</label>
           <select id="join-type" value={manualType} onChange={(e) => setManualType(e.target.value)}>
-            <option value="">Choose your type</option>
+            <option value="">escolha seu tipo</option>
             {Object.keys(PERSONALITY_TYPES).map((code) => (
               <option key={code} value={code}>
-                {code} · {PERSONALITY_TYPES[code].name}
+                {code}  {PERSONALITY_TYPES[code].name}
               </option>
             ))}
           </select>
         </>
       ) : (
         <div className="join-options">
-          <p>To join, we need your personality type.</p>
+          <p>para entrar, precisamos saber seu tipo de personalidade.</p>
           <button type="button" className="btn btn-primary" onClick={takeTest}>
-            Take the free test (10 min)
+            fazer o teste grátis (10 min)
           </button>
           <button type="button" className="btn" onClick={() => setManual(true)}>
-            I already know my type
+            j sei meu tipo
           </button>
         </div>
       )}
 
       {(last?.type || manual) && (
         <button type="submit" className="btn btn-primary" disabled={!canJoin || busy}>
-          {busy ? 'Joining…' : `Join ${label}`}
+          {busy ? 'entrando' : `entrar: ${label}`}
         </button>
       )}
     </form>

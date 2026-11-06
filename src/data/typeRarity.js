@@ -6,10 +6,10 @@ export const TYPE_PREVALENCE = {
 };
 
 const TIERS = [
-  { max: 2, id: 'legendary', label: 'Legendary', emoji: '🌟' },
-  { max: 4, id: 'epic', label: 'Epic', emoji: '💎' },
-  { max: 8.5, id: 'rare', label: 'Rare', emoji: '🔷' },
-  { max: Infinity, id: 'common', label: 'Common', emoji: '⚪' },
+  { max: 2, id: 'legendary', label: 'lendário', emoji: '🌟' },
+  { max: 4, id: 'epic', label: 'épico', emoji: '💎' },
+  { max: 8.5, id: 'rare', label: 'raro', emoji: '🔷' },
+  { max: Infinity, id: 'common', label: 'comum', emoji: '⚪' },
 ];
 
 export const rarityFor = (code) => {
@@ -18,4 +18,4 @@ export const rarityFor = (code) => {
 };
 
 // Mini-quiz outcomes are bonus cards.
-export const BONUS_TIER = { id: 'bonus', label: 'Bonus', emoji: '🎁' };
+export const BONUS_TIER = { id: 'bonus', label: 'bônus', emoji: '🎁' };

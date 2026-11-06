@@ -10,8 +10,8 @@ export const clientLoader = () => {
 
 export const meta = () =>
   buildMeta({
-    title: 'Your Personality Test Result | TrueYouTeller',
-    description: 'See your personality test result.',
+    title: 'seu resultado do teste de personalidade | TrueYouTeller',
+    description: 'veja seu resultado do teste de personalidade.',
     path: '/test',
     noindex: true,
   });

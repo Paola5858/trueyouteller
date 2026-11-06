@@ -15,15 +15,15 @@ import '../styles/Social.css';
 
 export const meta = () =>
   buildMeta({
-    title: 'How do your friends see you? | TrueYouTeller',
-    description: 'Answer 16 quick questions about your friend. Anonymous, fun, and they will find out how the world sees them.',
+    title: 'como seus amigos veem voc | TrueYouTeller',
+    description: 'responda 16 perguntas rpidas e annimas sobre uma pessoa amiga.',
     path: '/play',
     noindex: true,
   });
 
 const LETTER_NAMES = {
-  I: 'Introverted', E: 'Extraverted', S: 'Observant', N: 'Intuitive',
-  T: 'Thinking', F: 'Feeling', J: 'Judging', P: 'Prospecting',
+  I: 'mais reservado', E: 'mais expansivo', S: 'prtico', N: 'intuitivo',
+  T: 'racional', F: 'guiado pelos sentimentos', J: 'planejador', P: 'espontneo',
 };
 
 // Average the friends' per-axis percentages, then pick letters (ties keep the owner's letter).
@@ -56,7 +56,7 @@ const RatingForm = ({ ownerName, onSubmit, busy }) => {
       <div
         className="progress-bar-container"
         role="progressbar"
-        aria-label="Progress"
+        aria-label="progresso"
         aria-valuemin={0}
         aria-valuemax={MIRROR_QUESTIONS.length}
         aria-valuenow={index}
@@ -64,12 +64,12 @@ const RatingForm = ({ ownerName, onSubmit, busy }) => {
         <div className="progress-bar" style={{ width: `${(index / MIRROR_QUESTIONS.length) * 100}%` }} />
       </div>
       <p className="quiz-counter">
-        {index + 1} of {MIRROR_QUESTIONS.length}
+        {index + 1} de {MIRROR_QUESTIONS.length}
       </p>
       <h2 className="mirror-statement" aria-live="polite">
         {question.statement.replace('{name}', ownerName)}
       </h2>
-      <div className="likert-row" role="group" aria-label="How true is this?">
+      <div className="likert-row" role="group" aria-label="o quanto isso combina com a pessoa?">
         {answerOptions.map((option) => (
           <button
             key={option.value}
@@ -84,7 +84,7 @@ const RatingForm = ({ ownerName, onSubmit, busy }) => {
       </div>
       {index > 0 && (
         <button type="button" className="btn quiz-back" onClick={() => setIndex(index - 1)}>
-          ← Back
+          ? voltar
         </button>
       )}
     </div>
@@ -102,13 +102,13 @@ const MirrorResults = ({ mirror, ratings }) => {
 
   return (
     <div className="social-panel">
-      <h2>What your friends think</h2>
+      <h2>como seus amigos veem você</h2>
       <p className="mirror-summary">
-        You see yourself as <strong>{mirror.ownerType}</strong>. Your friends see you as{' '}
+        voc se v como <strong>{mirror.ownerType}</strong>. seus amigos veem voc como{' '}
         <strong>
           {type} ({PERSONALITY_TYPES[type].name})
         </strong>
-        {type === mirror.ownerType ? '. You know yourself well! 🎯' : '. Interesting! 👀'}
+        {type === mirror.ownerType ? '. voc se conhece bem! 🎯' : '. que curioso! 👀'}
       </p>
       <div className="mirror-bars">
         {Object.entries(AXES).map(([axis, [l, h]]) => (
@@ -118,11 +118,11 @@ const MirrorResults = ({ mirror, ratings }) => {
               <span>{LETTER_NAMES[h]}</span>
             </div>
             <div className="mirror-track">
-              <span className="mirror-marker mirror-self" style={{ left: `${self[axis]}%` }} title="You">
-                You
+              <span className="mirror-marker mirror-self" style={{ left: `${self[axis]}%` }} title="você">
+                você
               </span>
-              <span className="mirror-marker mirror-friends" style={{ left: `${average[axis]}%` }} title="Friends">
-                Friends
+              <span className="mirror-marker mirror-friends" style={{ left: `${average[axis]}%` }} title="amigos">
+                amigos
               </span>
             </div>
           </div>
@@ -130,11 +130,11 @@ const MirrorResults = ({ mirror, ratings }) => {
       </div>
       {biggest.gap >= 10 && (
         <p className="mirror-gap">
-          Biggest surprise: your friends see you as more <strong>{LETTER_NAMES[friendsLean].toLowerCase()}</strong> than
-          you think ({biggest.gap} points apart).
+          maior surpresa: seus amigos veem voc como mais <strong>{LETTER_NAMES[friendsLean]}</strong> do que você
+          imaginava (uma diferena de {biggest.gap} pontos).
         </p>
       )}
-      <p className="play-privacy">Based on {ratings.length} anonymous ratings. More ratings make it more accurate.</p>
+      <p className="play-privacy">resultado baseado em {ratings.length} respostas annimas. mais respostas deixam o retrato mais consistente.</p>
     </div>
   );
 };
@@ -168,7 +168,7 @@ const MirrorPage = () => {
       setRated(true);
     } catch (err) {
       console.error(err);
-      setError('Could not save your answers. Please try again.');
+      setError('não conseguimos salvar suas respostas. tente novamente.');
     } finally {
       setBusy(false);
     }
@@ -178,43 +178,43 @@ const MirrorPage = () => {
     <div className="container section social-page">
       <span className="play-emoji" aria-hidden="true">🪞</span>
       <h1 className="page-title">
-        {owner ? 'How do your friends see you?' : `How do you see ${mirror.ownerName}?`}
+        {owner ? 'como seus amigos veem você?' : `como voc v ${mirror.ownerName}?`}
       </h1>
 
       {owner ? (
         <>
           <p className="types-intro">
-            Send this link to friends. They answer 16 quick statements about you, anonymously. Results unlock after{' '}
-            {MIRROR_MIN_RATINGS} friends answer.
+            compartilhe este link com seus amigos. eles respondem 16 frases sobre você, sem se identificar. o resultado
+            aparece quando {MIRROR_MIN_RATINGS} pessoas responderem.
           </p>
           <ShareLinkBox
             url={url}
             kind="mirrors"
-            title="How do you see me?"
-            text={`How well do you know me? Answer 16 quick questions about me (it's anonymous!) 🪞`}
+            title="como voc me v?"
+            text="quanto voc me conhece? responda 16 perguntas rpidas sobre mim, sem se identificar 🪞"
           />
           {ratings === null ? (
-            <p>Loading ratings…</p>
+            <p>carregando respostas</p>
           ) : count >= MIRROR_MIN_RATINGS ? (
             <MirrorResults mirror={mirror} ratings={ratings} />
           ) : (
             <p className="mirror-waiting">
-              {count} of {MIRROR_MIN_RATINGS} friends have answered so far. Results unlock at {MIRROR_MIN_RATINGS} to keep
-              ratings anonymous.
+              {count} de {MIRROR_MIN_RATINGS} pessoas responderam at agora. o resultado aparece quando chegarmos a{' '}
+              {MIRROR_MIN_RATINGS}, para manter as respostas annimas.
             </p>
           )}
         </>
       ) : rated ? (
         <div className="social-panel">
-          <h2>Thanks! 💜</h2>
-          <p>Your anonymous answers were sent to {mirror.ownerName}.</p>
-          <p>Curious what your own type is?</p>
-          <Link to="/test" className="btn btn-primary">Take the free personality test</Link>
+          <h2>obrigado por responder! 💜</h2>
+          <p>suas respostas annimas foram enviadas para {mirror.ownerName}.</p>
+          <p>quer descobrir seu prprio perfil?</p>
+          <Link to="/test" className="btn btn-primary">fazer o teste de personalidade grátis</Link>
         </div>
       ) : (
         <>
           <p className="types-intro">
-            {mirror.ownerName} wants to know how friends see them. Rate 16 statements. Your answers are anonymous.
+            {mirror.ownerName} quer saber como os amigos veem essa pessoa. avalie 16 frases; suas respostas so annimas.
           </p>
           {error && <p className="form-error" role="alert">{error}</p>}
           <RatingForm ownerName={mirror.ownerName} onSubmit={submit} busy={busy} />

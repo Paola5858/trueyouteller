@@ -32,7 +32,7 @@ const ThemeToggle = () => {
       type="button"
       className="theme-toggle"
       onClick={toggle}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? 'mudar para o tema claro' : 'mudar para o tema escuro'}
       aria-pressed={isDark}
     >
       {isDark ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}

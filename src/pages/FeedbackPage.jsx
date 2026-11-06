@@ -6,8 +6,8 @@ import '../styles/FeedbackPage.css';
 
 export const meta = () =>
   buildMeta({
-    title: "Feedback - TrueYouTeller",
-    description: "Share your feedback about TrueYouTeller. Help us improve and make our free personality test and quizzes even better!",
+    title: 'conte o que achou do TrueYouTeller',
+    description: 'sua opinio ajuda a melhorar o teste de personalidade e os outros jogos do TrueYouTeller.',
     path: '/feedback',
   });
 
@@ -48,25 +48,25 @@ const FeedbackPage = () => {
   return (
     <div className="feedback-container container section">
       <div className="feedback-content">
-        <h1 className="page-title">We'd Love Your Feedback!</h1>
+        <h1 className="page-title">o que voc achou?</h1>
         <p>
-          Your opinion matters to us! Please share your thoughts about TrueYouTeller and how we can make it even better.
+          queremos saber como foi sua experincia e o que poderia ficar melhor.
         </p>
         <form ref={form} className="feedback-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">seu nome</label>
             <input 
               type="text" 
               id="name" 
               name="name" 
               {...register("name", {
-                required: "Name is required",
+                required: 'informe seu nome',
                 minLength: {
                   value: 2,
-                  message: "Name must be at least 2 characters"
+                  message: 'o nome precisa ter pelo menos 2 caracteres',
                 }
               })}
-              placeholder="Your name"
+              placeholder="como podemos chamar você?"
               disabled={isSubmitting}
             />
             {errors.name && (
@@ -74,16 +74,16 @@ const FeedbackPage = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">e-mail</label>
             <input 
               type="email" 
               id="email" 
               name="email" 
               {...register("email", {
-                required: "Email is required",
+                required: 'informe seu e-mail',
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Invalid email address"
+                  message: 'confira se o e-mail est correto',
                 }
               })}
               placeholder="your@email.com"
@@ -94,40 +94,40 @@ const FeedbackPage = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="rating">Overall Rating</label>
+            <label htmlFor="rating">como voc avalia a experincia?</label>
             <select 
               id="rating" 
               name="rating" 
               {...register("rating", {
-                required: "Please select a rating"
+                required: 'escolha uma nota',
               })}
               disabled={isSubmitting}
             >
-              <option value="">Select a rating</option>
-              <option value="5">⭐⭐⭐⭐⭐ Excellent (5/5)</option>
-              <option value="4">⭐⭐⭐⭐☆ Very Good (4/5)</option>
-              <option value="3">⭐⭐⭐☆☆ Good (3/5)</option>
-              <option value="2">⭐⭐☆☆☆ Fair (2/5)</option>
-              <option value="1">⭐☆☆☆☆ Poor (1/5)</option>
+              <option value="">selecione uma nota</option>
+              <option value="5">⭐⭐⭐⭐⭐ excelente (5/5)</option>
+              <option value="4">⭐⭐⭐⭐☆ muito boa (4/5)</option>
+              <option value="3">⭐⭐⭐☆☆ boa (3/5)</option>
+              <option value="2">⭐⭐☆☆☆ regular (2/5)</option>
+              <option value="1">⭐☆☆☆☆ ruim (1/5)</option>
             </select>
             {errors.rating && (
               <p className="error-message">{errors.rating.message}</p>
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="feedback">Your Feedback</label>
+            <label htmlFor="feedback">sua opinio</label>
             <textarea 
               id="feedback" 
               name="feedback" 
               rows="6" 
               {...register("feedback", {
-                required: "Feedback is required",
+                required: 'escreva sua opinio',
                 minLength: {
                   value: 10,
-                  message: "Feedback must be at least 10 characters"
+                  message: 'a opinio precisa ter pelo menos 10 caracteres',
                 }
               })}
-              placeholder="Tell us what you loved, what we could improve, or any suggestions you have..."
+              placeholder="o que voc curtiu? o que podemos melhorar? vale qualquer sugesto..."
               disabled={isSubmitting}
             ></textarea>
             {errors.feedback && (
@@ -137,13 +137,13 @@ const FeedbackPage = () => {
           
           {submitStatus === 'success' && (
             <div className="status-message success">
-              Thank you for your feedback! Your input helps us improve TrueYouTeller.
+              obrigado por compartilhar sua opinio. ela ajuda o projeto a crescer.
             </div>
           )}
           
           {submitStatus === 'error' && (
             <div className="status-message error">
-              Sorry, there was an error submitting your feedback. Please try again.
+              não conseguimos enviar sua opinio agora. tente mais uma vez.
             </div>
           )}
           
@@ -152,7 +152,7 @@ const FeedbackPage = () => {
             className="btn btn-primary" 
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
+            {isSubmitting ? 'enviando...' : 'enviar opinio'}
           </button>
         </form>
       </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 // items: [{ name, path }], last item is the current page.
 const Breadcrumbs = ({ items }) => (
-  <nav aria-label="Breadcrumb" className="breadcrumbs">
+  <nav aria-label="trilha de navegao" className="breadcrumbs">
     <ol>
       {items.map((item, i) => (
         <li key={item.path}>

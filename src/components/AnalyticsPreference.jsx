@@ -5,22 +5,21 @@ import { getConsent, setConsent } from '../utils/analytics';
 const AnalyticsPreference = () => {
   const [consent, setConsentState] = useState(null);
 
-  useEffect(() => setConsentState(getConsent() ?? 'granted'), []);
+  useEffect(() => setConsentState(getConsent()), []);
 
-  if (!consent) return null;
-
-  const optedOut = consent === 'denied';
+  const optedIn = consent === 'granted';
   const toggle = () => {
-    const next = optedOut ? 'granted' : 'denied';
+    const next = optedIn ? 'denied' : 'granted';
     setConsent(next);
     setConsentState(next);
   };
 
   return (
     <p className="analytics-preference" role="status">
-      Analytics is currently <strong>{optedOut ? 'off' : 'on'}</strong> for this browser.{' '}
+      as mtricas esto{' '}
+      <strong>{consent === null ? ' aguardando sua escolha' : optedIn ? ' ativadas' : ' desativadas'}</strong> neste navegador.{' '}
       <button type="button" className="btn" onClick={toggle}>
-        {optedOut ? 'Turn analytics on' : 'Opt out of analytics'}
+        {optedIn ? 'desativar mtricas' : 'aceitar mtricas'}
       </button>
     </p>
   );

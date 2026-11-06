@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { getConsent, setConsent, startAnalytics } from '../utils/analytics';
 
-// Small dismissible notice: analytics runs by default, visitors can opt out here
-// or later on the privacy page. Renders after mount (consent lives in the browser).
+// aviso de privacidade: analytics roda por padrão, a pessoa pode recusar aqui
 const AnalyticsNotice = () => {
   const [visible, setVisible] = useState(false);
 
@@ -22,17 +21,17 @@ const AnalyticsNotice = () => {
   };
 
   return (
-    <div className="analytics-notice" role="region" aria-label="Analytics notice">
+    <div className="analytics-notice" role="region" aria-label="preferências de privacidade">
       <p>
-        🍪 We use Google Analytics to see which quizzes people love and improve the site. No ads, no selling data.{' '}
-        <Link to="/privacy">Read our privacy policy</Link>
+        podemos usar o Google Analytics para entender o que funciona e melhorar o site. não vendemos seus dados.{' '}
+        <Link to="/privacy">leia nossa política de privacidade</Link>
       </p>
       <div className="analytics-notice-buttons">
         <button type="button" className="btn btn-primary" onClick={() => choose('granted')}>
-          OK
+          aceitar
         </button>
         <button type="button" className="btn" onClick={() => choose('denied')}>
-          No thanks
+          agora não
         </button>
       </div>
     </div>

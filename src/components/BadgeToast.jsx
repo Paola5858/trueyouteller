@@ -24,7 +24,7 @@ const BadgeToast = () => {
         <div className="badge-toast" key={badge.id}>
           <span className="badge-toast-emoji" aria-hidden="true">{badge.emoji}</span>
           <span>
-            <strong>Badge unlocked!</strong>
+            <strong>novo distintivo!</strong>
             <br />
             {badge.name}
           </span>

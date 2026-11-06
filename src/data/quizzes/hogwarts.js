@@ -11,7 +11,7 @@ const quiz = {
     'Which Hogwarts house are you: Gryffindor, Ravenclaw, Hufflepuff or Slytherin? Take this free Sorting Hat personality quiz and find your house in 2 minutes.',
   questions: [
     {
-      text: 'You find a mysterious locked door in the castle. You…',
+      text: 'You find a mysterious locked door in the castle. You',
       options: [
         opt('Open it immediately, whatever is behind it', 'gryffindor'),
         opt('Study the lock and work out the riddle', 'ravenclaw'),
@@ -38,7 +38,7 @@ const quiz = {
       ],
     },
     {
-      text: 'Your friend is being picked on in the corridor. You…',
+      text: 'Your friend is being picked on in the corridor. You',
       options: [
         opt('Step in right away, wand out', 'gryffindor'),
         opt('Out-talk the bully with a perfect comeback', 'ravenclaw'),
@@ -56,7 +56,7 @@ const quiz = {
       ],
     },
     {
-      text: 'Group project! You naturally become…',
+      text: 'Group project! You naturally become',
       options: [
         opt('The one who presents to the whole class', 'gryffindor'),
         opt('The researcher with all the facts', 'ravenclaw'),
@@ -83,7 +83,7 @@ const quiz = {
       ],
     },
     {
-      text: 'The Sorting Hat whispers in your ear. You ask for…',
+      text: 'The Sorting Hat whispers in your ear. You ask for',
       options: [
         opt('Wherever the adventure is', 'gryffindor'),
         opt('Wherever I can learn the most', 'ravenclaw'),

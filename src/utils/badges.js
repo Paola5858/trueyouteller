@@ -3,14 +3,14 @@ import { track } from './analytics';
 // Fun, browser-only achievements. Stored in localStorage; unlocking one fires a
 // "tyt:badge" window event that the BadgeToast component shows.
 export const BADGES = [
-  { id: 'first-test', emoji: '🔮', name: 'Crystal Gazer', hint: 'Finish the personality test' },
-  { id: 'quiz-rookie', emoji: '🎯', name: 'Quiz Rookie', hint: 'Finish any mini-quiz' },
-  { id: 'quiz-master', emoji: '🏆', name: 'Quiz Master', hint: 'Finish every mini-quiz' },
-  { id: 'sharer', emoji: '🦋', name: 'Social Butterfly', hint: 'Share a result' },
-  { id: 'matchmaker', emoji: '💞', name: 'Matchmaker', hint: 'Check a compatibility' },
-  { id: 'inviter', emoji: '🧲', name: 'Friend Magnet', hint: 'Invite a friend to compare' },
-  { id: 'explorer', emoji: '🧭', name: 'Type Explorer', hint: 'Read about 5 personality types' },
-  { id: 'night-owl', emoji: '🦉', name: 'Night Owl', hint: 'Switch on dark mode' },
+  { id: 'first-test', emoji: '🔮', name: 'olhar de cristal', hint: 'termine o teste de personalidade' },
+  { id: 'quiz-rookie', emoji: '🎯', name: 'primeiro desafio', hint: 'termine qualquer teste rpido' },
+  { id: 'quiz-master', emoji: '🏆', name: 'mestre dos testes', hint: 'termine todos os testes rpidos' },
+  { id: 'sharer', emoji: '🦋', name: 'espalha a novidade', hint: 'compartilhe um resultado' },
+  { id: 'matchmaker', emoji: '💞', name: 'cupido dos perfis', hint: 'compare dois tipos de personalidade' },
+  { id: 'inviter', emoji: '🧲', name: 'puxa a conversa', hint: 'convide algum para comparar os perfis' },
+  { id: 'explorer', emoji: '🧭', name: 'explorador de perfis', hint: 'leia sobre 5 tipos de personalidade' },
+  { id: 'night-owl', emoji: '🦉', name: 'coruja noturna', hint: 'ative o tema escuro' },
 ];
 
 const KEY = 'tyt:badges';

@@ -7,28 +7,28 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import '../styles/TypePages.css';
 
 const GROUPS = [
-  { name: 'Analysts', blurb: 'Intuitive thinkers who love ideas, logic and strategy.', codes: ['INTJ', 'INTP', 'ENTJ', 'ENTP'] },
-  { name: 'Diplomats', blurb: 'Intuitive feelers driven by empathy, ideals and meaning.', codes: ['INFJ', 'INFP', 'ENFJ', 'ENFP'] },
-  { name: 'Sentinels', blurb: 'Observant planners who value duty, order and loyalty.', codes: ['ISTJ', 'ISFJ', 'ESTJ', 'ESFJ'] },
-  { name: 'Explorers', blurb: 'Observant free spirits who live for action and experience.', codes: ['ISTP', 'ISFP', 'ESTP', 'ESFP'] },
+  { name: 'analistas', blurb: 'pessoas curiosas que gostam de ideias, lgica e estratgia.', codes: ['INTJ', 'INTP', 'ENTJ', 'ENTP'] },
+  { name: 'diplomatas', blurb: 'pessoas guiadas por empatia, ideais e busca de sentido.', codes: ['INFJ', 'INFP', 'ENFJ', 'ENFP'] },
+  { name: 'sentinelas', blurb: 'pessoas atentas que valorizam compromisso, organizao e lealdade.', codes: ['ISTJ', 'ISFJ', 'ESTJ', 'ESFJ'] },
+  { name: 'exploradores', blurb: 'pessoas espontneas que gostam de ao e novas experincias.', codes: ['ISTP', 'ISFP', 'ESTP', 'ESFP'] },
 ];
 
 const CRUMBS = [
-  { name: 'Home', path: '/' },
-  { name: '16 Personality Types', path: '/types' },
+  { name: 'início', path: '/' },
+  { name: '16 tipos de personalidade', path: '/types' },
 ];
 
 export const meta = () =>
   buildMeta({
-    title: 'The 16 Personality Types Explained (With Spirit Animals) | TrueYouTeller',
+    title: 'conhea os 16 tipos de personalidade | TrueYouTeller',
     description:
-      'Explore all 16 personality types: INTJ, INFP, ENFP, ISTJ and more. Discover each type\'s traits, strengths, careers, compatibility and spirit animal.',
+      'explore os 16 perfis de personalidade e conhea suas caractersticas, pontos fortes, relações e animal simblico.',
     path: '/types',
     jsonLd: [
       {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        name: 'The 16 Personality Types',
+        name: 'os 16 tipos de personalidade',
         itemListElement: GROUPS.flatMap((g) => g.codes).map((code, i) => ({
           '@type': 'ListItem',
           position: i + 1,
@@ -43,11 +43,11 @@ export const meta = () =>
 const TypesHubPage = () => (
   <div className="container section types-hub">
     <Breadcrumbs items={CRUMBS} />
-    <h1 className="page-title">The 16 Personality Types</h1>
+    <h1 className="page-title">os 16 tipos de personalidade</h1>
     <p className="types-intro">
-      Every personality type is a mix of four preferences: where you get your energy (Introversion or Extraversion),
-      what you notice (Sensing or Intuition), how you decide (Thinking or Feeling) and how you live (Judging or
-      Perceiving). Pick a type to explore it, or <Link to="/test">take the free personality test</Link> to find yours.
+      cada perfil combina quatro preferências: de onde vem sua energia (introverso ou extroverso), o que chama sua
+      atenção (sensao ou intuio), como voc decide (razo ou sentimento) e como organiza a vida (planejamento ou
+      flexibilidade). escolha um perfil para explorar ou <Link to="/test">faa o teste grátis</Link> para descobrir o seu.
     </p>
     {GROUPS.map((group) => (
       <section key={group.name} className="type-group" aria-labelledby={`group-${group.name}`}>

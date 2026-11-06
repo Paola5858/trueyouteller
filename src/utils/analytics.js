@@ -1,7 +1,7 @@
 import { getFirebaseApp } from '../firebase/config';
 
-// Google Analytics 4 via Firebase. Runs by default in production; visitors can opt
-// out via the AnalyticsNotice banner or the privacy page. The SDK loads lazily and
+// Google Analytics 4 via Firebase. Runs only after consent; visitors can opt out
+// via the AnalyticsNotice banner or the privacy page. The SDK loads lazily and
 // never during prerendering. Page views come from GA4's enhanced measurement
 // ("page changes based on browser history events"), so only custom events are sent here.
 
@@ -18,7 +18,7 @@ export const getConsent = () => {
 };
 
 const isEnabled = () =>
-  typeof window !== 'undefined' && Boolean(MEASUREMENT_ID) && (import.meta.env.PROD || DEBUG) && getConsent() !== 'denied';
+  typeof window !== 'undefined' && Boolean(MEASUREMENT_ID) && (import.meta.env.PROD || DEBUG) && getConsent() === 'granted';
 
 let analyticsPromise;
 

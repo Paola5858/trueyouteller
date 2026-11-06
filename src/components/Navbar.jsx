@@ -13,17 +13,17 @@ const Navbar = () => {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <nav className="navbar" aria-label="Main">
+    <nav className="navbar" aria-label="menu principal">
       <div className="navbar-container container">
         <NavLink to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <img src={logo} alt="TrueYouTeller home" className="navbar-brand-logo logo-light" width="150" height="150" />
+          <img src={logo} alt="início do TrueYouTeller" className="navbar-brand-logo logo-light" width="150" height="150" />
           <img src={logoDark} alt="" className="navbar-brand-logo logo-dark" width="150" height="150" />
         </NavLink>
         <button
           type="button"
           className="menu-icon"
           onClick={handleClick}
-          aria-label={click ? 'Close menu' : 'Open menu'}
+          aria-label={click ? 'fechar menu' : 'abrir menu'}
           aria-expanded={click}
           aria-controls="nav-menu"
         >
@@ -33,37 +33,37 @@ const Navbar = () => {
           <ul id="nav-menu" className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
               <NavLink to="/types" className="nav-links" onClick={closeMobileMenu}>
-                Types
+                tipos
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/quizzes" className="nav-links" onClick={closeMobileMenu}>
-                Quizzes
+                testes rpidos
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/compatibility" className="nav-links" onClick={closeMobileMenu}>
-                Compatibility
+                compatibilidade
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/play" className="nav-links" onClick={closeMobileMenu}>
-                Play
+                jogar
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/about" className="nav-links" onClick={closeMobileMenu}>
-                About Us
+                sobre ns
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/contact" className="nav-links" onClick={closeMobileMenu}>
-                Contact
+                contato
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/test" className="nav-links nav-cta" onClick={closeMobileMenu}>
-                Take the Test
+                fazer o teste
               </NavLink>
             </li>
           </ul>

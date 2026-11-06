@@ -13,22 +13,22 @@ const J = { axis: 'JP', direction: -1 };
 const q = (statement, map) => ({ statement, mapping: [map] });
 
 export const MIRROR_QUESTIONS = [
-  q('{name} lights up a room full of people.', E),
-  q('{name} has wild ideas and loves talking about "what if".', N),
-  q('{name} tells it like it is, even when it stings.', T),
-  q('{name} always has a plan (and probably a backup plan).', J),
-  q('{name} needs alone time to recharge after socializing.', I),
-  q('{name} notices practical details everyone else misses.', S),
-  q('{name} is the first to notice when someone is upset.', F),
-  q('{name} happily changes plans at the last minute.', P),
-  q('{name} is usually the one starting conversations with new people.', E),
-  q('{name} gets lost in daydreams and big-picture thinking.', N),
-  q('{name} makes decisions with their head, not their heart.', T),
-  q('{name} likes things organized and settled early.', J),
-  q('{name} prefers deep one-on-one chats to big parties.', I),
-  q('{name} prefers proven, practical ways of doing things.', S),
-  q('{name} would rather keep the peace than win an argument.', F),
-  q('{name} does their best work at the last minute.', P),
+  q('{name} anima o ambiente quando chega.', E),
+  q('{name} tem ideias diferentes e adora imaginar "e se...".', N),
+  q('{name} fala com sinceridade, mesmo quando  difcil ouvir.', T),
+  q('{name} costuma ter um plano e talvez at um plano reserva.', J),
+  q('{name} precisa de um tempo sozinho para recarregar depois de socializar.', I),
+  q('{name} percebe detalhes prticos que passam batido para os outros.', S),
+  q('{name} costuma notar primeiro quando algum não est bem.', F),
+  q('{name} lida numa boa quando os planos mudam de ltima hora.', P),
+  q('{name} geralmente comea a conversa com quem ainda não conhece.', E),
+  q('{name} viaja nas ideias e gosta de olhar o panorama geral.', N),
+  q('{name} decide mais pela razo do que pela emoo.', T),
+  q('{name} gosta de deixar as coisas organizadas e resolvidas com antecedncia.', J),
+  q('{name} prefere uma conversa profunda a uma festa cheia.', I),
+  q('{name} prefere um jeito prtico e conhecido de resolver as coisas.', S),
+  q('{name} prefere manter a paz a ganhar uma discusso.', F),
+  q('{name} costuma render melhor quando o prazo est chegando.', P),
 ];
 
 export const MIRROR_MIN_RATINGS = 3;

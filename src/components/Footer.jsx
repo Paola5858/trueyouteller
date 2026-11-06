@@ -7,22 +7,22 @@ const Footer = () => (
     <div className="container footer-grid">
       <div>
         <h2>TrueYouTeller</h2>
-        <p>A free, fun personality test that reveals your 16-type personality and spirit animal.</p>
+        <p>um teste de personalidade gratuito e divertido para descobrir seu perfil e seu animal simblico.</p>
       </div>
-      <nav aria-label="Explore">
-        <h2>Explore</h2>
+      <nav aria-label="explore">
+        <h2>explore</h2>
         <ul>
-          <li><Link to="/test">Free Personality Test</Link></li>
-          <li><Link to="/types">16 Personality Types</Link></li>
-          <li><Link to="/compatibility">Compatibility Checker</Link></li>
-          <li><Link to="/quizzes">Fun Quizzes</Link></li>
-          <li><Link to="/play">Play with Friends</Link></li>
-          <li><Link to="/cards">My Card Deck</Link></li>
+          <li><Link to="/test">teste de personalidade grátis</Link></li>
+          <li><Link to="/types">16 tipos de personalidade</Link></li>
+          <li><Link to="/compatibility">compatibilidade entre perfis</Link></li>
+          <li><Link to="/quizzes">testes rpidos</Link></li>
+          <li><Link to="/play">jogar com amigos</Link></li>
+          <li><Link to="/cards">minha coleo de cartas</Link></li>
           <li><Link to="/#faq">FAQ</Link></li>
         </ul>
       </nav>
-      <nav aria-label="Personality types" className="footer-types">
-        <h2>Personality Types</h2>
+      <nav aria-label="tipos de personalidade" className="footer-types">
+        <h2>tipos de personalidade</h2>
         <ul>
           {Object.values(PERSONALITY_TYPES).map((type) => (
             <li key={type.code}>
@@ -31,18 +31,18 @@ const Footer = () => (
           ))}
         </ul>
       </nav>
-      <nav aria-label="Company">
-        <h2>Company</h2>
+      <nav aria-label="sobre o projeto">
+        <h2>sobre o projeto</h2>
         <ul>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/feedback">Feedback</Link></li>
-          <li><Link to="/privacy">Privacy Policy</Link></li>
+          <li><Link to="/about">sobre ns</Link></li>
+          <li><Link to="/contact">contato</Link></li>
+          <li><Link to="/feedback">deixe sua opinio</Link></li>
+          <li><Link to="/privacy">privacidade</Link></li>
         </ul>
       </nav>
     </div>
     <p className="container footer-bottom">
-      © {new Date().getFullYear()} TrueYouTeller. For fun and self-reflection, not a clinical assessment.
+      © {new Date().getFullYear()} TrueYouTeller. feito para se conhecer melhor, não para fins de diagnstico.
     </p>
   </footer>
 );

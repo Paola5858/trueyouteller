@@ -17,8 +17,8 @@ import '../styles/Social.css';
 
 export const meta = () =>
   buildMeta({
-    title: 'Couple & Best Friend Personality Report | TrueYouTeller',
-    description: 'See how your two personality types fit together: how you fight, make up, plan and have fun.',
+    title: 'relatrio de personalidade para duplas | TrueYouTeller',
+    description: 'veja como dois perfis se combinam na conversa, nos planos e na hora de resolver diferenas.',
     path: '/play',
     noindex: true,
   });
@@ -28,7 +28,7 @@ const Person = ({ name, type }) => (
     <img src={getAnimalImage(PERSONALITY_TYPES[type].spiritAnimal)} alt="" width="110" height="110" />
     <span className="compat-type-code">{name}</span>
     <span className="compat-type-name">
-      {type} · {PERSONALITY_TYPES[type].name}
+      {type}  {PERSONALITY_TYPES[type].name}
     </span>
   </div>
 );
@@ -47,7 +47,7 @@ const DuoPage = () => {
 
   const partner = partners?.[0];
   const couple = duo.mode === 'couple';
-  const label = couple ? 'couple report' : 'best friend report';
+  const label = couple ? 'relatrio de casal' : 'relatrio de amizade';
 
   const join = async ({ name, type }) => {
     setBusy(true);
@@ -58,7 +58,7 @@ const DuoPage = () => {
       track('social_answer', { kind: 'duos' });
     } catch (err) {
       console.error(err);
-      setError('Someone already completed this report, or something went wrong. Please try again.');
+      setError('algum j respondeu a este relatrio ou algo deu errado. tente novamente.');
     } finally {
       setBusy(false);
     }
@@ -71,11 +71,11 @@ const DuoPage = () => {
     <div className="container section social-page compat-page">
       <span className="play-emoji" aria-hidden="true">{couple ? '💑' : '👯'}</span>
       <h1 className="page-title">
-        {partner ? `${duo.aName} & ${partner.name}` : couple ? 'Couple report' : 'Best friend report'}
+        {partner ? `${duo.aName} & ${partner.name}` : couple ? 'relatrio de casal' : 'relatrio de amizade'}
       </h1>
 
       {partners === null ? (
-        <p className="page-loading">Loading…</p>
+        <p className="page-loading">carregando</p>
       ) : report ? (
         <>
           <div className="compat-pair">
@@ -100,32 +100,32 @@ const DuoPage = () => {
           </div>
           <div className="quiz-result-actions">
             <Link to={`/compatibility/${pairSlug(duo.aType, partner.type)}`} className="btn btn-primary">
-              Full {duo.aType} & {partner.type} compatibility
+              ver a compatibilidade entre {duo.aType} e {partner.type}
             </Link>
-            <Link to="/play" className="btn">Play another game</Link>
+            <Link to="/play" className="btn">jogar outra brincadeira</Link>
           </div>
         </>
       ) : owner ? (
         <>
           <p className="types-intro">
-            Send this link to your {couple ? 'partner' : 'best friend'}. Your joint report appears here as soon as they
-            join.
+            envie este link para {couple ? 'seu par' : 'sua melhor amizade'}. o relatrio aparece aqui assim que a outra
+            pessoa entrar.
           </p>
           <ShareLinkBox
             url={`${SITE_URL}/duo/${id}`}
             kind="duos"
-            title={couple ? 'Our couple personality report' : 'Our best friend personality report'}
-            text={couple ? "Let's see how our personalities fit together 💑" : "Let's get our best friend personality report 👯"}
+            title={couple ? 'nosso relatrio de personalidade de casal' : 'nosso relatrio de amizade'}
+            text={couple ? 'vamos descobrir como nossos jeitos combinam 💑' : 'vamos comparar nossos perfis de amizade 👯'}
           />
-          <p className="mirror-waiting">Waiting for them to join…</p>
+          <p className="mirror-waiting">esperando a outra pessoa entrar</p>
         </>
       ) : (
         <div className="social-panel">
           <p>
-            <strong>{duo.aName}</strong> ({duo.aType}) invited you to a {label}. Join with your type to unlock it.
+            <strong>{duo.aName}</strong> ({duo.aType}) convidou voc para um {label}. entre com seu perfil para ver o resultado.
           </p>
           {error && <p className="form-error" role="alert">{error}</p>}
-          <JoinPanel label={`the ${label}`} returnPath={`/duo/${id}`} onJoin={join} busy={busy} />
+          <JoinPanel label={label} returnPath={`/duo/${id}`} onJoin={join} busy={busy} />
         </div>
       )}
     </div>

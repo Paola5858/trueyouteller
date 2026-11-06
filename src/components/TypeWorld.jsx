@@ -8,10 +8,10 @@ const TypeWorld = ({ code, isYou = false }) => {
   if (!world) return null;
   return (
     <section className="result-card type-world" aria-labelledby={`world-${code}`}>
-      <h2 id={`world-${code}`}>{isYou ? 'Your' : `The ${code}`} world 🌍</h2>
+      <h2 id={`world-${code}`}>{isYou ? 'seu universo' : `universo ${code}`} 🌍</h2>
       <div className="type-world-grid">
         <div className="type-world-item">
-          <h3>🎬 Watch list</h3>
+          <h3>🎬 para assistir</h3>
           <ul>
             {world.watch.map((title) => (
               <li key={title}>{title}</li>
@@ -19,21 +19,21 @@ const TypeWorld = ({ code, isYou = false }) => {
           </ul>
         </div>
         <div className="type-world-item">
-          <h3>🎭 Character twin</h3>
+          <h3>🎭 personagem que combina</h3>
           <p>{world.twin}</p>
-          <p className="type-world-note">A fun fan-style match, not an official typing.</p>
+          <p className="type-world-note">uma comparao divertida, sem classificao oficial.</p>
         </div>
         <div className="type-world-item">
-          <h3>💼 Dream work day</h3>
+          <h3>💼 um dia ideal de trabalho</h3>
           <p>{world.dreamDay}</p>
         </div>
         <div className="type-world-item">
-          <h3>☀️ Perfect weekend</h3>
+          <h3>☀️ fim de semana perfeito</h3>
           <p>{world.weekend}</p>
         </div>
       </div>
       <a className="btn type-world-spotify" href={spotifyLink(code)} target="_blank" rel="noopener noreferrer">
-        🎧 Find {code} playlists on Spotify
+        🎧 encontrar playlists {code} no Spotify
       </a>
     </section>
   );

@@ -13,17 +13,17 @@ import '../styles/TypePages.css';
 import '../styles/Quiz.css';
 
 const crumbsFor = (quiz) => [
-  { name: 'Home', path: '/' },
-  { name: 'Fun Quizzes', path: '/quizzes' },
+  { name: 'início', path: '/' },
+  { name: 'testes rpidos', path: '/quizzes' },
   { name: quiz.shortTitle, path: `/quizzes/${quiz.slug}` },
 ];
 
 export const meta = ({ params }) => {
   const quiz = getQuiz(params.slug);
-  if (!quiz) return [{ title: 'Quiz Not Found | TrueYouTeller' }, { name: 'robots', content: 'noindex' }];
+  if (!quiz) return [{ title: 'teste não encontrado | TrueYouTeller' }, { name: 'robots', content: 'noindex' }];
   const path = `/quizzes/${quiz.slug}`;
   return buildMeta({
-    title: `${quiz.title} | Free Quiz | TrueYouTeller`,
+    title: `${quiz.title} | teste grátis | TrueYouTeller`,
     description: quiz.seoDescription,
     path,
     image: `${SITE_URL}/og/quiz-${quiz.slug}.png`,
@@ -85,7 +85,7 @@ const QuizShare = ({ quiz, outcomeId, outcome }) => {
   };
   const handleCopy = async () => {
     const ok = await copyText(url);
-    setStatus(ok ? 'Link copied!' : 'Could not copy the link.');
+    setStatus(ok ? 'link copiado!' : 'não foi possvel copiar o link.');
     if (ok) shared('copy_link');
   };
 
@@ -94,7 +94,7 @@ const QuizShare = ({ quiz, outcomeId, outcome }) => {
       <div className="share-buttons">
         {canNativeShare && (
           <button type="button" className="btn btn-primary share-btn" onClick={handleNative}>
-            <FaShareNodes aria-hidden="true" /> Share
+            <FaShareNodes aria-hidden="true" /> compartilhar
           </button>
         )}
         <a className="btn share-btn" href={links.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => shared('whatsapp')}>
@@ -104,7 +104,7 @@ const QuizShare = ({ quiz, outcomeId, outcome }) => {
           <FaXTwitter aria-hidden="true" /> X
         </a>
         <button type="button" className="btn share-btn" onClick={handleCopy}>
-          <FaLink aria-hidden="true" /> Copy link
+          <FaLink aria-hidden="true" /> copiar link
         </button>
       </div>
       <p className="share-status" role="status">{status}</p>
@@ -174,9 +174,9 @@ const QuizPage = () => {
   if (!quiz) {
     return (
       <div className="container section">
-        <h1 className="page-title">Hmm, we couldn't find that quiz</h1>
+        <h1 className="page-title">não encontramos esse teste</h1>
         <p>
-          Browse <Link to="/quizzes">all quizzes</Link> instead.
+          veja os <Link to="/quizzes">outros testes</Link>.
         </p>
       </div>
     );
@@ -195,16 +195,16 @@ const QuizPage = () => {
           <h1 className="page-title">{quiz.title}</h1>
           {sharedOutcome && (
             <p className="quiz-shared-banner">
-              Your friend got <strong>{sharedOutcome.emoji} {sharedOutcome.name}</strong>! What will you get?
+              sua pessoa amiga tirou <strong>{sharedOutcome.emoji} {sharedOutcome.name}</strong>! e você?
             </p>
           )}
           <p className="quiz-intro-text">{quiz.description}</p>
           <p className="quiz-card-meta">
-            {quiz.questions.length} questions · about {Math.max(1, Math.round(quiz.questions.length / 5))} min ·{' '}
-            {Object.keys(quiz.outcomes).length} possible results
+            {quiz.questions.length} perguntas  cerca de {Math.max(1, Math.round(quiz.questions.length / 5))} min {' '}
+            {Object.keys(quiz.outcomes).length} resultados possíveis
           </p>
           <button type="button" className="btn btn-primary quiz-start" onClick={start}>
-            Start the quiz
+            comear o teste
           </button>
         </div>
       )}
@@ -215,7 +215,7 @@ const QuizPage = () => {
           <div
             className="progress-bar-container"
             role="progressbar"
-            aria-label="Quiz progress"
+            aria-label="progresso do teste"
             aria-valuemin={0}
             aria-valuemax={quiz.questions.length}
             aria-valuenow={index}
@@ -223,7 +223,7 @@ const QuizPage = () => {
             <div className="progress-bar" style={{ width: `${(index / quiz.questions.length) * 100}%` }} />
           </div>
           <p className="quiz-counter">
-            Question {index + 1} of {quiz.questions.length}
+            pergunta {index + 1} de {quiz.questions.length}
           </p>
           <h2 className="quiz-question" aria-live="polite">{quiz.questions[index].text}</h2>
           <div className="quiz-options">
@@ -242,7 +242,7 @@ const QuizPage = () => {
           </div>
           {index > 0 && (
             <button type="button" className="btn quiz-back" onClick={() => setIndex(index - 1)}>
-              ← Back
+              ? voltar
             </button>
           )}
         </div>
@@ -252,25 +252,25 @@ const QuizPage = () => {
         <div className="quiz-panel quiz-result">
           <span className="quiz-hero-emoji quiz-result-pop" aria-hidden="true">{quiz.outcomes[outcomeId].emoji}</span>
           <p className="result-kicker">{quiz.title}</p>
-          <h1 className="page-title">You are {quiz.outcomes[outcomeId].name}!</h1>
+          <h1 className="page-title">seu resultado: {quiz.outcomes[outcomeId].name}!</h1>
           <p className="quiz-tagline">{quiz.outcomes[outcomeId].tagline}</p>
           <p className="quiz-summary">{quiz.outcomes[outcomeId].summary}</p>
           <QuizShare quiz={quiz} outcomeId={outcomeId} outcome={quiz.outcomes[outcomeId]} />
           <OutcomeSections outcome={quiz.outcomes[outcomeId]} />
           <div className="quiz-result-actions">
             <button type="button" className="btn" onClick={start}>
-              Retake quiz
+              refazer o teste
             </button>
-            <Link to="/cards" className="btn">🃏 Added to your deck</Link>
+            <Link to="/cards" className="btn">🃏 adicionado à sua coleo</Link>
             <Link to="/test" className="btn btn-primary">
-              Take the full personality test
+              fazer o teste completo de personalidade
             </Link>
           </div>
         </div>
       )}
 
       <section className="quiz-more" aria-labelledby="more-quizzes">
-        <h2 id="more-quizzes">More fun quizzes</h2>
+        <h2 id="more-quizzes">mais testes para se divertir</h2>
         <div className="quiz-grid">
           {otherQuizzes.map((other) => (
             <QuizCard key={other.slug} quiz={other} />

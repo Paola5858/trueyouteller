@@ -6,9 +6,9 @@ const quiz = {
   title: 'Which Marvel Hero Are You?',
   shortTitle: 'Marvel Hero',
   emoji: '🦸',
-  description: 'Genius, soldier, god, spy, web-slinger or big green rage machine? Assemble your answers and find out.',
+  description: 'gênio, soldado, deus, espiã, cabeça de teia ou máquina verde de raiva? junte suas respostas e descubra.',
   seoDescription:
-    'Which Avenger are you: Iron Man, Captain America, Thor, Black Widow, Spider-Man or Hulk? Take this free Marvel superhero personality quiz.',
+    'qual vingador você seria: homem de ferro, capitão américa, thor, viúva negra, homem-aranha ou hulk? faça este teste grátis de super-herói da marvel.',
   questions: [
     {
       text: 'The city is under attack. What do you do first?',
@@ -47,7 +47,7 @@ const quiz = {
       ],
     },
     {
-      text: 'Someone breaks a promise to you. You…',
+      text: 'Someone breaks a promise to you. You',
       options: [
         opt('Make a sarcastic comment and move on', { 'iron-man': 1 }),
         opt('Calmly tell them it matters to you', { 'captain-america': 1 }),
@@ -74,7 +74,7 @@ const quiz = {
       ],
     },
     {
-      text: 'In a team, you are…',
+      text: 'In a team, you are',
       options: [
         opt('The leader everyone follows', { 'captain-america': 1, thor: 1 }),
         opt('The one with the secret backup plan', { 'black-widow': 2 }),
@@ -83,7 +83,7 @@ const quiz = {
       ],
     },
     {
-      text: 'Your theme song is…',
+      text: 'Your theme song is',
       options: [
         opt('Loud rock', { 'iron-man': 1, thor: 1 }),
         opt('A classic oldie', { 'captain-america': 1 }),

@@ -12,37 +12,37 @@ import { buildMeta, faqJsonLd, organizationJsonLd, websiteJsonLd } from '../util
 
 const FAQS = [
   {
-    question: 'Is this personality test free?',
+    question: 'o teste de personalidade  gratuito?',
     answer:
-      'Yes. The TrueYouTeller personality test is 100% free, with no sign-up and no paywall. You get your full 16-type result, spirit animal and detailed profile instantly.',
+      'sim. o teste  grátis, não precisa criar conta e não tem contedo pago. no fim, voc recebe seu perfil completo, com tipo, pontos fortes e outras pistas sobre você.',
   },
   {
-    question: 'How long does the personality test take?',
+    question: 'quanto tempo leva?',
     answer:
-      'About 10 minutes. You rate 48 short statements from "Strongly Disagree" to "Strongly Agree", one at a time.',
+      'cerca de 10 minutos. so 48 frases curtas para voc dizer o quanto cada uma combina com seu jeito.',
   },
   {
-    question: 'Is this an MBTI test?',
+    question: 'este  um teste MBTI?',
     answer:
-      'It is an MBTI-style test based on the same four preference pairs (Introversion/Extraversion, Sensing/Intuition, Thinking/Feeling, Judging/Perceiving) and gives one of 16 personality types. It is not the official Myers-Briggs Type Indicator®.',
+      'ele se inspira nas quatro dimenses do modelo MBTI e apresenta um entre 16 perfis. não  o instrumento oficial Myers-Briggs Type Indicator® nem substitui uma avaliao profissional.',
   },
   {
-    question: 'How accurate is the result?',
+    question: 'o resultado  preciso?',
     answer:
-      'It is designed for fun and self-reflection, not clinical diagnosis. Answer honestly about how you usually are, not how you want to be, for the most accurate result.',
+      'a proposta  ajudar voc a refletir, não fazer diagnstico. responda pensando em como costuma agir, sem se preocupar com o que seria a resposta ideal.',
   },
   {
-    question: 'What do I get at the end?',
+    question: 'o que aparece no resultado?',
     answer:
-      'Your four-letter personality type, a spirit animal, strengths and weaknesses, career ideas, relationship insights, and famous people and characters who share your type.',
+      'voc recebe seu tipo de personalidade, caractersticas que podem combinar com você, ideias sobre trabalho e relações, alm de sugestes de pessoas e personagens com perfil parecido.',
   },
 ];
 
 export const meta = () =>
   buildMeta({
-    title: 'Free Personality Test (16 Types) | TrueYouTeller',
+    title: 'teste de personalidade grátis: descubra seu perfil | TrueYouTeller',
     description:
-      'Take our free personality test and discover which of the 16 personality types you are, plus your spirit animal. No sign-up, instant results, about 10 minutes.',
+      'faa um teste de personalidade grátis e descubra qual dos 16 perfis combina mais com você. sem cadastro, resultado na hora e cerca de 10 minutos.',
     path: '/',
     jsonLd: [websiteJsonLd, organizationJsonLd, faqJsonLd(FAQS)],
   });
@@ -53,58 +53,58 @@ const LandingPage = () => {
       <header className="landing-header">
         <img
           src={logo}
-          alt="TrueYouTeller crystal ball"
+          alt="bola de cristal do TrueYouTeller"
           className="crystal-ball-image"
           width="400"
           height="400"
           fetchPriority="high"
         />
-        <h1>Free Personality Test: Discover Your True Type</h1>
+        <h1>um teste leve para entender melhor o seu jeito</h1>
         <p className="subtitle">
-          Find out which of the 16 personality types you are, and meet your spirit animal, in about 10 minutes.
+          responda com calma e descubra qual dos 16 perfis mais combina com você. leva cerca de 10 minutos.
         </p>
-        <Link to="/test" className="btn btn-primary bouncing">Start the Free Test</Link>
+        <Link to="/test" className="btn btn-primary bouncing">comear o teste grátis</Link>
       </header>
 
       <section className="section container how-it-works">
-        <h2>How the Personality Test Works</h2>
+        <h2>como funciona</h2>
         <div className="steps-container">
           <div className="step">
             <div className="step-icon"><FaPencilAlt aria-hidden="true" /></div>
-            <h3>1. Take the Test</h3>
-            <p>Rate 48 fun, relatable statements about how you think, feel and act.</p>
+            <h3>1. responda no seu ritmo</h3>
+            <p>leia 48 frases sobre como voc pensa, sente e age. não existe resposta certa.</p>
           </div>
           <div className="step">
             <div className="step-icon"><GiCrystalBall aria-hidden="true" /></div>
-            <h3>2. Get Your Result</h3>
-            <p>Our magical crystal ball reveals your four-letter personality type and spirit animal.</p>
+            <h3>2. veja seu perfil</h3>
+            <p>ao terminar, voc recebe um tipo de personalidade e um animal que representa seu jeito.</p>
           </div>
           <div className="step">
             <div className="step-icon"><FaHeart aria-hidden="true" /></div>
-            <h3>3. Know Yourself</h3>
-            <p>Explore your strengths, career ideas, relationships and famous personality twins.</p>
+            <h3>3. descubra novas pistas</h3>
+            <p>explore seus pontos fortes, relações, ideias de carreira e perfis parecidos com o seu.</p>
           </div>
         </div>
       </section>
 
       <section className="section features-section">
         <div className="container">
-          <h2>Why You'll Love It</h2>
+          <h2>feito para ser leve e curioso</h2>
           <div className="features-container">
             <div className="feature-item">
               <div className="feature-icon"><FaPaintBrush aria-hidden="true" /></div>
-              <h3>Cute & Modern Design</h3>
-              <p>A personality quiz that feels like a game, not a questionnaire.</p>
+              <h3>uma experincia descontrada</h3>
+              <p>um teste com clima de brincadeira, sem cara de formulrio interminvel.</p>
             </div>
             <div className="feature-item">
               <div className="feature-icon"><FaLaughBeam aria-hidden="true" /></div>
-              <h3>Fun Questions</h3>
-              <p>Playful, thought-provoking statements based on the 16 personality types model.</p>
+              <h3>perguntas que fazem pensar</h3>
+              <p>frases simples para voc refletir sobre seus hbitos e preferências.</p>
             </div>
             <div className="feature-item">
               <div className="feature-icon"><FaBolt aria-hidden="true" /></div>
-              <h3>Free & Instant</h3>
-              <p>No sign-up and no paywall. Your full result appears right after the last question.</p>
+              <h3>grátis e sem cadastro</h3>
+              <p>seu resultado aparece assim que voc termina. sem conta e sem pegadinha.</p>
             </div>
           </div>
         </div>
@@ -113,20 +113,20 @@ const LandingPage = () => {
       <BadgeStrip />
 
       <section id="mini-games" className="section container mini-games">
-        <h2>Fun Quizzes</h2>
-        <p>Find your Hogwarts house, Marvel hero, FRIENDS character and more!</p>
+        <h2>testes para se divertir</h2>
+        <p>descubra sua casa de Hogwarts, um heri da Marvel, quem voc seria em FRIENDS e mais.</p>
         <div className="quiz-grid">
           {QUIZZES.slice(0, 3).map((quiz) => (
             <QuizCard key={quiz.slug} quiz={quiz} />
           ))}
         </div>
         <p className="mini-games-more">
-          <Link to="/quizzes" className="btn">See all {QUIZZES.length} quizzes →</Link>
+          <Link to="/quizzes" className="btn">ver os {QUIZZES.length} testes ?</Link>
         </p>
       </section>
 
       <section id="faq" className="section container faq-section">
-        <h2>Personality Test FAQ</h2>
+        <h2>dvidas frequentes</h2>
         <div className="faq-list">
           {FAQS.map(({ question, answer }) => (
             <details key={question} className="faq-item">
@@ -138,8 +138,8 @@ const LandingPage = () => {
       </section>
 
       <section className="section container final-cta">
-        <h2>Ready to Discover Your True Self?</h2>
-        <Link to="/test" className="btn btn-primary bouncing">Let's Go!</Link>
+        <h2>quer comear a se conhecer melhor?</h2>
+        <Link to="/test" className="btn btn-primary bouncing">vamos l</Link>
       </section>
     </div>
   );

@@ -84,13 +84,14 @@ body {
 .App {
   min-height: 100vh;
   background: var(--bg-gradient);
+  text-transform: lowercase;
 }
 
 /* Common button styles */
 .btn {
   padding: 12px 30px;
   border: 2px solid var(--bright-orange);
-  border-radius: 25px;
+  border-radius: 12px;
   background: var(--surface);
   color: var(--heading);
   font-family: var(--body-font);
@@ -100,6 +101,11 @@ body {
   text-decoration: none;
   display: inline-block;
   text-align: center;
+}
+
+:focus-visible {
+  outline: 3px solid var(--bright-orange);
+  outline-offset: 3px;
 }
 
 .btn:hover {
@@ -174,6 +180,15 @@ h3 {
 
 .bouncing {
   animation: bounce 2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Responsive design */

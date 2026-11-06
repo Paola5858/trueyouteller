@@ -6,8 +6,8 @@ import '../styles/ContactUsPage.css';
 
 export const meta = () =>
   buildMeta({
-    title: "Contact TrueYouTeller - We'd Love to Hear From You",
-    description: "Have questions, feedback, or just want to say hello? Contact the TrueYouTeller team. We're here to help you on your journey of self-discovery.",
+    title: 'fale com o TrueYouTeller',
+    description: 'tem uma dvida, sugesto ou s quer conversar? mande uma mensagem para a equipe do TrueYouTeller.',
     path: '/contact',
   });
 
@@ -48,25 +48,25 @@ const ContactUsPage = () => {
   return (
     <div className="contact-us-container container section">
       <div className="contact-us-content">
-        <h1 className="page-title">Contact Us</h1>
+        <h1 className="page-title">fale com a gente</h1>
         <p>
-          Have questions, feedback, or just want to say hello? Drop us a message below!
+          tem uma dvida, uma ideia ou quer dar um oi? escreva para ns por aqui.
         </p>
         <form ref={form} className="contact-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">seu nome</label>
             <input 
               type="text" 
               id="name" 
               name="name" 
               {...register("name", {
-                required: "Name is required",
+                required: 'informe seu nome',
                 minLength: {
                   value: 2,
-                  message: "Name must be at least 2 characters"
+                  message: 'o nome precisa ter pelo menos 2 caracteres',
                 }
               })}
-              placeholder="Your name"
+              placeholder="como podemos chamar você?"
               disabled={isSubmitting}
             />
             {errors.name && (
@@ -74,16 +74,16 @@ const ContactUsPage = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">e-mail</label>
             <input 
               type="email" 
               id="email" 
               name="email" 
               {...register("email", {
-                required: "Email is required",
+                required: 'informe seu e-mail',
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Invalid email address"
+                  message: 'confira se o e-mail est correto',
                 }
               })}
               placeholder="your@email.com"
@@ -94,19 +94,19 @@ const ContactUsPage = () => {
             )}
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">mensagem</label>
             <textarea 
               id="message" 
               name="message" 
               rows="5" 
               {...register("message", {
-                required: "Message is required",
+                required: 'escreva uma mensagem',
                 minLength: {
                   value: 10,
-                  message: "Message must be at least 10 characters"
+                  message: 'a mensagem precisa ter pelo menos 10 caracteres',
                 }
               })}
-              placeholder="Your message"
+              placeholder="conte um pouco do que voc precisa..."
               disabled={isSubmitting}
             ></textarea>
             {errors.message && (
@@ -116,13 +116,13 @@ const ContactUsPage = () => {
           
           {submitStatus === 'success' && (
             <div className="status-message success">
-              Thank you for your message! We will get back to you soon.
+              valeu por escrever! vamos responder assim que pudermos.
             </div>
           )}
           
           {submitStatus === 'error' && (
             <div className="status-message error">
-              Sorry, there was an error sending your message. Please try again.
+              não conseguimos enviar sua mensagem agora. tente mais uma vez.
             </div>
           )}
           
@@ -131,7 +131,7 @@ const ContactUsPage = () => {
             className="btn btn-primary" 
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? 'enviando...' : 'enviar mensagem'}
           </button>
         </form>
       </div>

@@ -4,9 +4,9 @@ const quiz = {
   title: 'Which Inside Out Character Are You?',
   shortTitle: 'Inside Out',
   emoji: '🧠',
-  description: "Ever wondered which of the emotions from Inside Out you're most like? Take this quiz to find out!",
+  description: "já se perguntou qual emoção de divertidamente mais parece com você? faça este teste e descubra!",
   seoDescription:
-    'Which Inside Out emotion are you: Joy, Sadness, Anger, Fear, Disgust, Anxiety, Envy, Ennui or Embarrassment? Take this free Inside Out personality quiz.',
+    'qual emoção de divertidamente você seria: alegria, tristeza, raiva, medo, nojinho, ansiedade, inveja, tédio ou vergonha? faça este teste grátis.',
   questions: [
     {
       text: "It's your first day at a new school/job. How do you feel?",

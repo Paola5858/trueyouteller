@@ -5,46 +5,46 @@ import { getCompatibility } from './compatibility.js';
 
 const FIGHT = {
   different: {
-    TF: '{a} and {b} argue differently: one wants to solve the problem, the other wants to feel heard first. Start with "I hear you", then fix it.',
+    TF: '{a} e {b} brigam de jeitos diferentes: uma pessoa quer resolver o problema, a outra quer se sentir ouvida primeiro. comecem com "eu te entendo", depois resolvam.',
   },
   same: {
-    T: 'You both debate like lawyers. Fights are short and logical, but remember to say sorry, not just "you have a point".',
-    F: 'You both hate conflict, so fights can simmer quietly. Say the hard thing early and kindly.',
+    T: 'vocês dois debatem como advogados. as brigas são curtas e lógicas, mas lembrem de pedir desculpas, não só dizer "você tem razão".',
+    F: 'vocês dois evitam conflito, então as brigas podem ferver em silêncio. falem o que incomoda cedo e com carinho.',
   },
 };
 
 const APOLOGY = {
   same: {
-    F: 'A heartfelt note, a long hug and "I never want you to feel that way" works for both of you.',
+    F: 'um bilhete sincero, um abraço demorado e "eu nunca quero que você se sinta assim" funcionam para os dois.',
     T: 'Explain what went wrong, own it and agree on a fix. That\'s romance to you two.',
   },
-  different: '{thinker} needs a clear explanation and a plan; {feeler} needs to hear that the hurt mattered. Give both.',
+  different: '{thinker} precisa de uma explicação clara e um plano; {feeler} precisa ouvir que o que sentiu importa. ofereçam os dois.',
 };
 
 const PLANS = {
-  bothJ: 'Two planners! Your shared calendar is a work of art. Leave one "no plans" day a month on purpose.',
-  bothP: 'Two free spirits! Adventures happen by accident. Agree on one person to handle tickets and deadlines.',
-  mixed: '{planner} plans the trip; {spontaneous} decides what happens once you get there. Perfect balance.',
+  bothJ: 'dois planejadores! a agenda de vocês é uma obra de arte. deixem um dia por mês sem planos, de propósito.',
+  bothP: 'dois espíritos livres! as aventuras acontecem por acaso. combinem uma pessoa para cuidar de ingressos e prazos.',
+  mixed: '{planner} planeja a viagem; {spontaneous} decide o que rola quando vocês chegam. equilíbrio perfeito.',
 };
 
 const DATES = {
   couple: {
-    EE: 'a festival, a concert or dinner with friends that turns into karaoke',
-    II: 'a cozy movie marathon with homemade snacks and phones off',
-    mixed: 'a cooking class: social enough for one of you, focused enough for the other',
+    EE: 'um festival, um show ou um jantar com amigos que vira karaokê',
+    II: 'uma maratona de filmes aconchegante, com lanches caseiros e celulares desligados',
+    mixed: 'uma aula de culinária: social o bastante para um, focada o bastante para o outro',
   },
   bestie: {
-    EE: 'a road trip with a loud playlist and zero quiet moments',
-    II: 'a bookshop and café crawl, followed by a long walk',
-    mixed: 'an escape room: teamwork, puzzles and lots to talk about after',
+    EE: 'uma viagem de carro com playlist alta e zero momentos de silêncio',
+    II: 'um rolê por livrarias e cafés, seguido de uma caminhada longa',
+    mixed: 'um escape room: trabalho em equipe, enigmas e muita conversa depois',
   },
 };
 
 const SUPERPOWERS = {
-  NN: 'Dreaming up big, original plans together',
-  SS: 'Getting real things done, fast',
-  TT: 'Solving any problem without drama',
-  FF: 'Making everyone around you feel welcome',
+  NN: 'sonhar juntos com planos grandes e originais',
+  SS: 'tirar coisas reais do papel, rápido',
+  TT: 'resolver qualquer problema sem drama',
+  FF: 'fazer todo mundo ao redor se sentir bem-vindo',
   default: 'Covering each other\'s blind spots',
 };
 
@@ -71,15 +71,15 @@ export const buildDuoReport = ({ mode, a, b }) => {
     score,
     tier,
     sections: [
-      { emoji: '⚡', title: 'How you fight', text: fill(sameTF ? FIGHT.same[ta[2]] : FIGHT.different.TF, names) },
-      { emoji: '🕊️', title: 'How to say sorry', text: fill(sameTF ? APOLOGY.same[ta[2]] : APOLOGY.different, names) },
-      { emoji: '🗓️', title: 'Who plans, who improvises', text: fill(PLANS[plans], names) },
+      { emoji: '⚡', title: 'como vocês brigam', text: fill(sameTF ? FIGHT.same[ta[2]] : FIGHT.different.TF, names) },
+      { emoji: '🕊️', title: 'como pedir desculpas', text: fill(sameTF ? APOLOGY.same[ta[2]] : APOLOGY.different, names) },
+      { emoji: '🗓️', title: 'quem planeja e quem improvisa', text: fill(PLANS[plans], names) },
       {
         emoji: mode === 'couple' ? '🌹' : '🎒',
-        title: mode === 'couple' ? 'Your ideal date' : 'Your ideal day out',
-        text: `${a.name} and ${b.name} would love ${DATES[mode][energy]}.`,
+        title: mode === 'couple' ? 'o encontro ideal de vocês' : 'o rolê ideal de vocês',
+        text: `${a.name} e ${b.name} iam curtir ${DATES[mode][energy]}.`,
       },
-      { emoji: '🦸', title: 'Your shared superpower', text: superpower },
+      { emoji: '🦸', title: 'o superpoder de vocês', text: superpower },
     ],
   };
 };

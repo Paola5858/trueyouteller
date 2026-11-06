@@ -26,8 +26,8 @@ const ShareSheet = ({ type, name, breakdown, url, isOwner }) => {
   }, [status]);
 
   const text = isOwner
-    ? `I'm ${type.code} (${type.name}) and my spirit animal is the ${type.spiritAnimal}! What's your personality type?`
-    : `${name ? `${name} is` : 'Meet'} ${type.code} (${type.name}). What's your personality type?`;
+    ? `meu tipo  ${type.code} (${type.name}) e meu animal simblico  ${type.spiritAnimal}! qual  o seu?`
+    : `${name ? `${name} ` : 'conhea'} ${type.code} (${type.name}). qual  o seu tipo de personalidade?`;
   const links = shareLinks({ text, url });
   const filename = `trueyouteller-${type.code.toLowerCase()}.png`;
 
@@ -38,7 +38,7 @@ const ShareSheet = ({ type, name, breakdown, url, isOwner }) => {
       shared(method);
     } catch (error) {
       console.error(error);
-      setStatus('Something went wrong. Please try again.');
+      setStatus('algo deu errado. tente novamente.');
     } finally {
       setBusy(false);
     }
@@ -48,13 +48,13 @@ const ShareSheet = ({ type, name, breakdown, url, isOwner }) => {
     withBusy('native', async () => {
       const blob = await drawShareCard({ type, name, breakdown });
       const file = blob && new File([blob], filename, { type: 'image/png' });
-      await nativeShare({ title: `${type.code} · ${type.name}`, text, url, file });
+      await nativeShare({ title: `${type.code}  ${type.name}`, text, url, file });
     });
 
   const handleDownloadImage = () =>
     withBusy('story_image', async () => {
       downloadBlob(await drawShareCard({ type, name, breakdown }), filename);
-      setStatus('Image downloaded! Post it to your story 📸');
+      setStatus('imagem baixada! compartilhe nos seus stories 📸');
     });
 
   const handleDownloadPdf = () =>
@@ -64,17 +64,17 @@ const ShareSheet = ({ type, name, breakdown, url, isOwner }) => {
 
   const handleCopy = async () => {
     const copied = await copyText(url);
-    setStatus(copied ? 'Link copied!' : 'Could not copy. Long-press the address bar instead.');
+    setStatus(copied ? 'link copiado!' : 'não foi possvel copiar. toque e segure o endereo da pgina.');
     if (copied) shared('copy_link');
   };
 
   return (
     <section className="share-sheet" aria-labelledby="share-heading">
-      <h2 id="share-heading">{isOwner ? 'Share your result' : 'Share this result'}</h2>
+      <h2 id="share-heading">{isOwner ? 'compartilhe seu resultado' : 'compartilhe este resultado'}</h2>
       <div className="share-buttons">
         {canNativeShare && (
           <button type="button" className="btn btn-primary share-btn" onClick={handleNativeShare} disabled={busy}>
-            <FaShareNodes aria-hidden="true" /> Share
+            <FaShareNodes aria-hidden="true" /> compartilhar
           </button>
         )}
         <a className="btn share-btn share-whatsapp" href={links.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => shared('whatsapp')}>
@@ -87,16 +87,16 @@ const ShareSheet = ({ type, name, breakdown, url, isOwner }) => {
           <FaFacebook aria-hidden="true" /> Facebook
         </a>
         <button type="button" className="btn share-btn" onClick={handleCopy}>
-          <FaLink aria-hidden="true" /> Copy link
+          <FaLink aria-hidden="true" /> copiar link
         </button>
         <button type="button" className="btn share-btn" onClick={handleDownloadImage} disabled={busy}>
-          <FaDownload aria-hidden="true" /> Story image
+          <FaDownload aria-hidden="true" /> imagem para stories
         </button>
         <button type="button" className="btn share-btn" onClick={handleDownloadPdf} disabled={busy}>
-          <FaFilePdf aria-hidden="true" /> PDF profile
+          <FaFilePdf aria-hidden="true" /> perfil em PDF
         </button>
       </div>
-      <p className="share-status" role="status">{busy ? 'Preparing…' : status}</p>
+      <p className="share-status" role="status">{busy ? 'preparando' : status}</p>
     </section>
   );
 };

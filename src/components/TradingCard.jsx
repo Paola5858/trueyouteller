@@ -9,10 +9,10 @@ const TradingCard = ({ type, breakdown, quizOutcome, quizTitle, locked = false }
   if (type) {
     const rarity = rarityFor(type.code);
     return (
-      <article className={`trading-card tier-${rarity.id} ${locked ? 'is-locked' : ''}`} aria-label={locked ? `Locked card, ${rarity.label}` : `${type.code} card, ${rarity.label}`}>
+      <article className={`trading-card tier-${rarity.id} ${locked ? 'is-locked' : ''}`} aria-label={locked ? `carta bloqueada, ${rarity.label}` : `carta ${type.code}, ${rarity.label}`}>
         <header className="trading-card-top">
           <span className="trading-card-rarity">{rarity.emoji} {rarity.label}</span>
-          <span className="trading-card-percent">{rarity.percent}% of people</span>
+          <span className="trading-card-percent">{rarity.percent}% das pessoas</span>
         </header>
         <div className="trading-card-art">
           {locked ? (
@@ -23,7 +23,7 @@ const TradingCard = ({ type, breakdown, quizOutcome, quizTitle, locked = false }
         </div>
         <div className="trading-card-body">
           <span className="trading-card-code">{locked ? '????' : type.code}</span>
-          <span className="trading-card-name">{locked ? 'Undiscovered type' : type.name}</span>
+          <span className="trading-card-name">{locked ? 'tipo ainda não descoberto' : type.name}</span>
           {!locked && breakdown && (
             <ul className="trading-card-stats">
               {breakdown.map((row) => (
@@ -44,7 +44,7 @@ const TradingCard = ({ type, breakdown, quizOutcome, quizTitle, locked = false }
   }
 
   return (
-    <article className={`trading-card tier-${BONUS_TIER.id} ${locked ? 'is-locked' : ''}`} aria-label={locked ? 'Locked bonus card' : `${quizOutcome.name} bonus card`}>
+    <article className={`trading-card tier-${BONUS_TIER.id} ${locked ? 'carta bônus bloqueada' : `${quizOutcome.name} carta bônus`}`}>
       <header className="trading-card-top">
         <span className="trading-card-rarity">{BONUS_TIER.emoji} {BONUS_TIER.label}</span>
       </header>

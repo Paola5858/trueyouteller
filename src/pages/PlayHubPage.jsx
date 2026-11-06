@@ -9,15 +9,15 @@ import '../styles/TypePages.css';
 import '../styles/Social.css';
 
 const CRUMBS = [
-  { name: 'Home', path: '/' },
-  { name: 'Play with Friends', path: '/play' },
+  { name: 'início', path: '/' },
+  { name: 'jogar com amigos', path: '/play' },
 ];
 
 export const meta = () =>
   buildMeta({
-    title: 'Personality Games to Play with Friends | TrueYouTeller',
+    title: 'jogos de personalidade para curtir com amigos | TrueYouTeller',
     description:
-      'Find out how your friends really see you, let them guess your personality type, compare as a couple or best friends, and map your whole group\'s personalities.',
+      'descubra como seus amigos veem você, compare perfis em dupla ou monte um mapa de personalidade do seu grupo.',
     path: '/play',
     jsonLd: [breadcrumbJsonLd(CRUMBS)],
   });
@@ -44,7 +44,7 @@ const PlayHubPage = () => {
       navigate(`/${path}/${id}`);
     } catch (err) {
       console.error(err);
-      setError('Sorry, something went wrong. Please try again in a moment.');
+      setError('algo deu errado. tente novamente daqui a pouco.');
       setBusy('');
     }
   };
@@ -54,25 +54,25 @@ const PlayHubPage = () => {
 
   const ResultGate = () => (
     <p className="play-gate">
-      <Link to="/test">Take the test first</Link> so we know your type.
+      <Link to="/test">faa o teste primeiro</Link> para descobrir seu perfil.
     </p>
   );
 
   return (
     <div className="container section play-hub">
       <Breadcrumbs items={CRUMBS} />
-      <h1 className="page-title">Play with Friends</h1>
+      <h1 className="page-title">jogue com seus amigos</h1>
       <p className="types-intro">
-        Personality is more fun together. Start a game below and send the link to your friends, family or partner. No
-        sign-up needed.
+        descobrir coisas sobre a gente fica melhor em grupo. escolha uma brincadeira e compartilhe o link com amigos,
+        famlia ou com quem voc gosta. ningum precisa criar conta.
       </p>
       {error && <p className="form-error" role="alert">{error}</p>}
 
       <div className="play-grid">
         <section className="play-card" aria-labelledby="play-mirror">
           <span className="play-emoji" aria-hidden="true">🪞</span>
-          <h2 id="play-mirror">How others see you</h2>
-          <p>Friends answer 16 quick questions about you, anonymously. See where they agree with you, and where they don't.</p>
+          <h2 id="play-mirror">como seus amigos veem você</h2>
+          <p>seus amigos respondem 16 perguntas sobre você, sem se identificar. depois, compare as respostas com as suas.</p>
           {needsResult ? (
             <ResultGate />
           ) : (
@@ -84,35 +84,35 @@ const PlayHubPage = () => {
                 create('mirrors', { ...owner, ownerPercentages: last.percentages ?? { IE: 50, SN: 50, TF: 50, JP: 50 } }, 'mirror')
               }
             >
-              {busy === 'mirrors' ? 'Creating…' : 'Create my mirror link'}
+              {busy === 'mirrors' ? 'criando' : 'criar meu link'}
             </button>
           )}
         </section>
 
         <section className="play-card" aria-labelledby="play-guess">
           <span className="play-emoji" aria-hidden="true">🤔</span>
-          <h2 id="play-guess">Guess my type</h2>
-          <p>Can your friends guess your four letters? Find out who knows you best on the leaderboard.</p>
+          <h2 id="play-guess">adivinhe meu tipo</h2>
+          <p>ser que seus amigos acertam seu perfil? veja quem conhece voc melhor no placar.</p>
           {needsResult ? (
             <ResultGate />
           ) : (
             <button type="button" className="btn btn-primary" disabled={Boolean(busy)} onClick={() => create('guesses', owner, 'guess')}>
-              {busy === 'guesses' ? 'Creating…' : 'Start a guessing game'}
+              {busy === 'guesses' ? 'criando' : 'comear a brincadeira'}
             </button>
           )}
         </section>
 
         <section className="play-card" aria-labelledby="play-duo">
           <span className="play-emoji" aria-hidden="true">💞</span>
-          <h2 id="play-duo">Couple or BFF report</h2>
-          <p>Send one link to your partner or best friend and get a joint report: how you fight, make up, plan and have fun.</p>
+          <h2 id="play-duo">relatrio para dupla</h2>
+          <p>mande um link para seu par ou melhor amigo e comparem como vocês conversam, resolvem diferenas e se divertem.</p>
           {needsResult ? (
             <ResultGate />
           ) : (
             <div className="play-buttons">
               {[
-                ['couple', '💑 Couple'],
-                ['bestie', '👯 Best friends'],
+                ['couple', '💑 casal'],
+                ['bestie', '👯 melhores amigos'],
               ].map(([mode, label]) => (
                 <button
                   key={mode}
@@ -121,7 +121,7 @@ const PlayHubPage = () => {
                   disabled={Boolean(busy)}
                   onClick={() => create('duos', { mode, aName: owner.ownerName, aType: owner.ownerType }, 'duo')}
                 >
-                  {busy === 'duos' ? 'Creating…' : label}
+                  {busy === 'duos' ? 'criando' : label}
                 </button>
               ))}
             </div>
@@ -130,8 +130,8 @@ const PlayHubPage = () => {
 
         <section className="play-card" aria-labelledby="play-room">
           <span className="play-emoji" aria-hidden="true">👨‍👩‍👧‍👦</span>
-          <h2 id="play-room">Group room</h2>
-          <p>Family, class, team or friend group: everyone joins with their type and you get a group personality map.</p>
+          <h2 id="play-room">mapa do grupo</h2>
+          <p>chame a famlia, a turma ou a equipe. cada pessoa entra com seu tipo e vocês veem o perfil do grupo.</p>
           <form
             className="room-form"
             onSubmit={(e) => {
@@ -139,15 +139,15 @@ const PlayHubPage = () => {
               if (roomName.trim()) create('rooms', { name: roomName.trim().slice(0, 40), emoji: roomEmoji }, 'room');
             }}
           >
-            <label htmlFor="room-name">Room name</label>
+            <label htmlFor="room-name">nome do grupo</label>
             <input
               id="room-name"
               value={roomName}
               maxLength={40}
               onChange={(e) => setRoomName(e.target.value)}
-              placeholder="e.g. The Sharma Family"
+              placeholder="ex.: nossa turma"
             />
-            <div className="emoji-picker" role="radiogroup" aria-label="Room emoji">
+            <div className="emoji-picker" role="radiogroup" aria-label="escolha um emoji para o grupo">
               {ROOM_EMOJIS.map((emoji) => (
                 <button
                   key={emoji}
@@ -162,15 +162,15 @@ const PlayHubPage = () => {
               ))}
             </div>
             <button type="submit" className="btn btn-primary" disabled={!roomName.trim() || Boolean(busy)}>
-              {busy === 'rooms' ? 'Creating…' : 'Create room'}
+              {busy === 'rooms' ? 'criando' : 'criar grupo'}
             </button>
           </form>
         </section>
       </div>
 
       <p className="play-privacy">
-        Anyone with a link can see what was shared in it, so only send links to people you trust. Mirror ratings never
-        include names. <Link to="/privacy">Privacy policy</Link>
+        qualquer pessoa com o link pode ver o que foi compartilhado; envie apenas para quem voc conhece. as respostas
+        sobre voc não mostram nomes. <Link to="/privacy">saiba mais sobre privacidade</Link>
       </p>
     </div>
   );

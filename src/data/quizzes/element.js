@@ -20,7 +20,7 @@ const quiz = {
       ],
     },
     {
-      text: 'When you are stressed, you…',
+      text: 'When you are stressed, you',
       options: [
         opt('Work out or blast music', 'fire'),
         opt('Talk it through with someone close', 'water'),
@@ -29,7 +29,7 @@ const quiz = {
       ],
     },
     {
-      text: 'Your friends come to you for…',
+      text: 'Your friends come to you for',
       options: [
         opt('Motivation and hype', 'fire'),
         opt('Comfort and a listening ear', 'water'),
@@ -74,7 +74,7 @@ const quiz = {
       ],
     },
     {
-      text: 'Your room is…',
+      text: 'Your room is',
       options: [
         opt('Bold and full of energy', 'fire'),
         opt('Soft, cozy and personal', 'water'),

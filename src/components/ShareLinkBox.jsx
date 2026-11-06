@@ -12,13 +12,13 @@ const ShareLinkBox = ({ url, text, title, kind }) => {
   const sent = (method) => track('social_invite', { kind, method });
   const copy = async () => {
     const ok = await copyText(url);
-    setStatus(ok ? 'Link copied!' : 'Could not copy. Select the link above instead.');
+    setStatus(ok ? 'link copiado!' : 'não foi possvel copiar. selecione o link acima.');
     if (ok) sent('copy_link');
   };
 
   return (
     <div className="share-link-box">
-      <input className="share-link-input" value={url} readOnly aria-label="Link to share" onFocus={(e) => e.target.select()} />
+      <input className="share-link-input" value={url} readOnly aria-label="link para compartilhar" onFocus={(e) => e.target.select()} />
       <div className="share-buttons">
         {canNativeShare && (
           <button
@@ -29,7 +29,7 @@ const ShareLinkBox = ({ url, text, title, kind }) => {
               sent('native');
             }}
           >
-            <FaShareNodes aria-hidden="true" /> Share
+            <FaShareNodes aria-hidden="true" /> compartilhar
           </button>
         )}
         <a
@@ -42,7 +42,7 @@ const ShareLinkBox = ({ url, text, title, kind }) => {
           <FaWhatsapp aria-hidden="true" /> WhatsApp
         </a>
         <button type="button" className="btn share-btn" onClick={copy}>
-          <FaLink aria-hidden="true" /> Copy link
+          <FaLink aria-hidden="true" /> copiar link
         </button>
       </div>
       <p className="share-status" role="status">{status}</p>

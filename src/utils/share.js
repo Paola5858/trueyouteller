@@ -77,43 +77,43 @@ export const downloadProfilePdf = async ({ type, name, breakdown, url }) => {
 
   heading(`${name ? `${name}: ` : ''}${type.code} · ${type.name}`, 22);
   paragraph(type.description);
-  paragraph(`Spirit animal: ${type.spiritAnimal}. ${type.reason}`);
+  paragraph(`animal simbólico: ${type.spiritAnimal}. ${type.reason}`);
   if (breakdown) {
     paragraph(breakdown.map((row) => `${row.letter} ${row.strength}%`).join('   ·   '));
   }
 
-  heading('Personality overview');
+  heading('visão geral do perfil');
   paragraph(type.personalityTraits);
-  heading('Personal growth', 13);
+  heading('ideias para crescer', 13);
   paragraph(type.personalGrowth);
-  heading('Strengths', 13);
+  heading('pontos fortes', 13);
   list(type.strengthsWeaknesses.strengths);
-  heading('Weaknesses', 13);
+  heading('pontos de atenção', 13);
   list(type.strengthsWeaknesses.weaknesses);
-  heading('What energizes you', 13);
+  heading('o que recarrega suas energias', 13);
   paragraph(type.whatEnergizesYou);
-  heading('What drains you', 13);
+  heading('o que pode cansar você', 13);
   paragraph(type.whatDrainsYou);
 
-  heading('Career insights');
+  heading('caminhos profissionais');
   paragraph(type.careerInsights.careerPath);
-  heading('Career ideas', 13);
+  heading('áreas que podem combinar', 13);
   paragraph(type.careerInsights.careerIdeas.join(', '));
-  heading('Workspace habits', 13);
+  heading('seu jeito de trabalhar', 13);
   paragraph(type.careerInsights.workspaceHabits);
 
-  heading('Relationships');
+  heading('relações e conexões');
   paragraph(type.relationshipsConnections.yourRelationships);
-  heading('Love language', 13);
+  heading('como você demonstra carinho', 13);
   paragraph(type.relationshipsConnections.yourLoveLanguage);
 
-  heading('Friendships');
+  heading('amizades');
   paragraph(type.socialCirclesFamilyLife.friendships.description);
-  heading('Famous matches', 13);
+  heading('referências culturais', 13);
   paragraph(type.culturalConnections.famousMatches.join(', '));
 
   y += 10;
-  paragraph(`Take the free personality test at ${url}`);
+  paragraph(`faça o teste de personalidade grátis em ${url}`);
 
   doc.save(`trueyouteller-${type.code.toLowerCase()}.pdf`);
 };

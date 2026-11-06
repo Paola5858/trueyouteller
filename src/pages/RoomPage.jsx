@@ -15,8 +15,8 @@ import '../styles/Social.css';
 
 export const meta = () =>
   buildMeta({
-    title: 'Group Personality Room | TrueYouTeller',
-    description: 'Join the room with your personality type and see your group\'s personality map.',
+    title: 'sala de personalidade em grupo | TrueYouTeller',
+    description: 'entre na sala com seu tipo de personalidade e veja o mapa do grupo.',
     path: '/play',
     noindex: true,
   });
@@ -28,11 +28,11 @@ const MAX_GRID = 10;
 const QuadrantMap = ({ members }) => {
   const buckets = {};
   return (
-    <div className="quadrant-map" role="img" aria-label="Group map: introverts left, extraverts right, thinkers top, feelers bottom">
-      <span className="quadrant-label q-left">Introverts</span>
-      <span className="quadrant-label q-right">Extraverts</span>
-      <span className="quadrant-label q-top">Thinkers</span>
-      <span className="quadrant-label q-bottom">Feelers</span>
+    <div className="quadrant-map" role="img" aria-label="mapa do grupo: pessoas mais reservadas à esquerda, expansivas à direita, racionais acima e sensveis abaixo">
+      <span className="quadrant-label q-left">reservados</span>
+      <span className="quadrant-label q-right">expansivos</span>
+      <span className="quadrant-label q-top">racionais</span>
+      <span className="quadrant-label q-bottom">sensveis</span>
       {members.map((member) => {
         const key = member.type[0] + member.type[2];
         const n = (buckets[key] = (buckets[key] ?? -1) + 1);
@@ -43,7 +43,7 @@ const QuadrantMap = ({ members }) => {
             key={member.id}
             className="quadrant-avatar"
             style={{ left: `${x}%`, top: `${y}%` }}
-            title={`${member.name} · ${member.type}`}
+            title={`${member.name}  ${member.type}`}
           >
             <span aria-hidden="true">{PERSONALITY_TYPES[member.type].emoji}</span>
             <span className="quadrant-avatar-name">{member.name}</span>
@@ -63,21 +63,21 @@ const RoomInsights = ({ members }) => {
   return (
     <>
       <section className="social-panel" aria-labelledby="room-map">
-        <h2 id="room-map">Group map</h2>
+        <h2 id="room-map">mapa do grupo</h2>
         <QuadrantMap members={members} />
       </section>
 
       <section className="social-panel" aria-labelledby="room-roles">
-        <h2 id="room-roles">Who's who</h2>
+        <h2 id="room-roles">quem  quem</h2>
         <div className="table-scroll">
           <table className="room-table">
             <thead>
               <tr>
-                <th scope="col">Member</th>
-                <th scope="col">Type</th>
-                <th scope="col">Role</th>
+                <th scope="col">pessoa</th>
+                <th scope="col">tipo</th>
+                <th scope="col">papel</th>
                 <th scope="col">FRIENDS</th>
-                <th scope="col">Avengers</th>
+                <th scope="col">Vingadores</th>
               </tr>
             </thead>
             <tbody>
@@ -103,7 +103,7 @@ const RoomInsights = ({ members }) => {
       </section>
 
       <section className="social-panel" aria-labelledby="room-balance">
-        <h2 id="room-balance">Group balance</h2>
+        <h2 id="room-balance">equilbrio do grupo</h2>
         <ul className="temperament-list">
           {TEMPERAMENTS.map((t) => {
             const count = members.filter((m) => t.test(m.type)).length;
@@ -118,7 +118,7 @@ const RoomInsights = ({ members }) => {
           <ul className="room-gaps">
             {missing.map((t) => (
               <li key={t.id}>
-                <strong>No {t.name}.</strong> {t.gap}
+                <strong>ningum do grupo  {t.name}.</strong> {t.gap}
               </li>
             ))}
           </ul>
@@ -127,7 +127,7 @@ const RoomInsights = ({ members }) => {
 
       {grid.length >= 2 && (
         <section className="social-panel" aria-labelledby="room-compat">
-          <h2 id="room-compat">Compatibility grid</h2>
+          <h2 id="room-compat">compatibilidade entre as pessoas</h2>
           <div className="table-scroll">
             <table className="compat-grid">
               <thead>
@@ -143,7 +143,7 @@ const RoomInsights = ({ members }) => {
                   <tr key={row.id}>
                     <th scope="row">{row.name}</th>
                     {grid.map((col) => {
-                      if (col.id === row.id) return <td key={col.id} className="compat-self">–</td>;
+                      if (col.id === row.id) return <td key={col.id} className="compat-self"></td>;
                       const { score } = getCompatibility(row.type, col.type);
                       return (
                         <td key={col.id} className={`compat-cell ${scoreClass(score)}`}>
@@ -156,7 +156,7 @@ const RoomInsights = ({ members }) => {
               </tbody>
             </table>
           </div>
-          {members.length > MAX_GRID && <p className="play-privacy">Showing the first {MAX_GRID} members.</p>}
+          {members.length > MAX_GRID && <p className="play-privacy">mostrando as primeiras {MAX_GRID} pessoas.</p>}
         </section>
       )}
     </>
@@ -190,7 +190,7 @@ const RoomPage = () => {
       setJoined(true);
     } catch (err) {
       console.error(err);
-      setError('Could not join the room. Please try again.');
+      setError('não conseguimos adicionar voc à sala. tente novamente.');
     } finally {
       setBusy(false);
     }
@@ -201,29 +201,28 @@ const RoomPage = () => {
       <span className="play-emoji" aria-hidden="true">{room.emoji}</span>
       <h1 className="page-title">{room.name}</h1>
       <p className="types-intro">
-        {members ? `${members.length} ${members.length === 1 ? 'member' : 'members'}` : 'Loading members…'} · a group
-        personality room
+        {members ? `${members.length} ${members.length === 1 ? 'pessoa' : 'pessoas'}` : 'carregando participantes'}  sala de personalidade
       </p>
 
       {(owner || joined) && (
         <ShareLinkBox
           url={`${SITE_URL}/room/${id}`}
           kind="rooms"
-          title={`Join ${room.name}`}
-          text={`Join "${room.name}" ${room.emoji} and let's map our group's personalities!`}
+          title={`entre em ${room.name}`}
+          text={`entre em "${room.name}" ${room.emoji} e vamos descobrir o perfil do grupo!`}
         />
       )}
 
       {!joined && (
         <div className="social-panel">
-          <h2>Join this room</h2>
+          <h2>entrar nesta sala</h2>
           {error && <p className="form-error" role="alert">{error}</p>}
           <JoinPanel label={`"${room.name}"`} returnPath={`/room/${id}`} onJoin={join} busy={busy} />
         </div>
       )}
 
       {members && members.length > 0 && <RoomInsights members={members} />}
-      {members && members.length === 0 && <p className="mirror-waiting">Nobody has joined yet. Be the first!</p>}
+      {members && members.length === 0 && <p className="mirror-waiting">ningum entrou ainda. seja a primeira pessoa!</p>}
     </div>
   );
 };

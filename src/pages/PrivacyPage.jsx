@@ -6,83 +6,83 @@ import '../styles/PrivacyPage.css';
 
 export const meta = () =>
   buildMeta({
-    title: 'Privacy Policy | TrueYouTeller',
-    description: 'How TrueYouTeller handles the name and answers you enter when taking the free personality test.',
+    title: 'privacidade | TrueYouTeller',
+    description: 'entenda quais dados o TrueYouTeller guarda e como suas escolhas de privacidade funcionam.',
     path: '/privacy',
   });
 
-const LAST_UPDATED = 'October 1, 2026';
+const LAST_UPDATED = '1 de outubro de 2026';
 
 const PrivacyPage = () => (
   <div className="privacy-page container section">
-    <h1 className="page-title">Privacy Policy</h1>
-    <p className="privacy-updated">Last updated: {LAST_UPDATED}</p>
+    <h1 className="page-title">privacidade</h1>
+    <p className="privacy-updated">ltima atualizao: {LAST_UPDATED}</p>
 
-    <h2>What we collect</h2>
-    <p>When you finish the personality test, we store:</p>
+    <h2>o que guardamos</h2>
+    <p>quando voc termina o teste de personalidade, guardamos:</p>
     <ul>
-      <li>the name (or nickname) you typed in before starting,</li>
-      <li>your answers to the test statements,</li>
-      <li>your resulting personality type, and</li>
-      <li>the time you finished.</li>
+      <li>o nome ou apelido informado no início,</li>
+      <li>suas respostas às perguntas,</li>
+      <li>o tipo de personalidade calculado, e</li>
+      <li>o horrio em que voc terminou.</li>
     </ul>
     <p>
-      We don't ask for your email, phone number or any account details to take the test. Feel free to use a
-      nickname, or tap "Generate Random Name".
+      não pedimos e-mail, telefone ou dados de conta para fazer o teste. voc pode usar um apelido; tambm d para
+      gerar um nome aleatrio.
     </p>
 
-    <h2>Why we collect it</h2>
+    <h2>para que usamos esses dados</h2>
     <p>
-      We use test results in aggregate to understand how people answer and to improve our questions and scoring.
-      We don't sell your data or use it for advertising.
+      os resultados so armazenados para manter o servio e ajudar a entender o funcionamento do teste. não vendemos
+      seus dados nem os usamos para publicidade.
     </p>
 
-    <h2>Contact and feedback forms</h2>
+    <h2>formulrios de contato e opinio</h2>
     <p>
-      Messages you send through the <Link to="/contact">Contact</Link> or <Link to="/feedback">Feedback</Link> forms
-      are delivered to us by email (via EmailJS) along with the name and email address you provide, so we can reply.
+      as mensagens enviadas pelos formulrios de <Link to="/contact">contato</Link> e{' '}
+      <Link to="/feedback">opinio</Link> chegam à equipe por e-mail, junto com o nome e o endereo informados, para
+      que possamos responder.
     </p>
 
-    <h2>Analytics</h2>
+    <h2>mtricas de uso</h2>
     <p>
-      We use Google Analytics 4 (through Firebase) to understand how the site is used: which pages are visited, how
-      many people finish the test or a quiz, which results are shared, and roughly which country and device visitors
-      use. Google Analytics sets cookies and receives your IP address, which Google uses to estimate location. We don't
-      send your name or answers to Google Analytics.
+      somente se voc aceitar, usamos o Google Analytics 4 (por meio do Firebase) para entender como o site  usado,
+      como as pginas visitadas e quantas pessoas terminam um teste. o servio pode usar cookies e receber seu endereo
+      IP para estimar sua localizao. não enviamos seu nome nem suas respostas ao Google Analytics.
     </p>
     <AnalyticsPreference />
 
-    <h2>Games with friends</h2>
+    <h2>jogos com amigos</h2>
     <p>
-      When you create a "How others see you", "Guess my type", couple/best-friend or group room link, we store the name
-      and personality type you choose to share, plus the answers friends submit through that link. Anyone who has the
-      link can see what was shared in it, so only send links to people you trust. "How others see you" ratings never
-      include the rater's name. Links can't be listed or searched; they work only for people you send them to.{' '}
-      <Link to="/contact">Contact us</Link> with a link to have it deleted.
+      ao criar um link de "como seus amigos veem você", "adivinhe meu tipo", casal, amizade ou sala em grupo,
+      guardamos o nome e o tipo que voc escolheu compartilhar, alm das respostas enviadas pelo link. qualquer pessoa
+      com o link pode ver esse contedo, ento compartilhe apenas com quem voc conhece. as avaliaes sobre voc não
+      mostram o nome de quem respondeu. os links não podem ser pesquisados nem listados. para pedir a excluso,{' '}
+      <Link to="/contact">fale com a gente</Link> e envie o link.
     </p>
 
-    <h2>Stored on your device</h2>
+    <h2>dados salvos no seu aparelho</h2>
     <p>
-      To make the site work without an account, your browser keeps your in-progress test, your last result, your
-      badges and cards, the game links you created or answered, your theme and your analytics choice in local
-      storage. Clearing your browser data removes them.
+      para que o site funcione sem conta, seu navegador guarda o teste em andamento, seu resultado mais recente,
+      distintivos, cartas, links de jogos, tema visual e escolha sobre mtricas. limpar os dados do navegador remove
+      essas informaes.
     </p>
 
-    <h2>Where it's stored</h2>
+    <h2>onde os dados ficam</h2>
     <p>
-      Test results are stored in Google Firebase (Cloud Firestore). The site is hosted on Firebase Hosting, which may
-      keep standard server logs such as IP addresses for security.
+      resultados e dados dos jogos ficam no Google Firebase (Cloud Firestore). o site  hospedado no Firebase Hosting,
+      que pode manter registros tcnicos, como endereos IP, por segurana.
     </p>
 
-    <h2>Your choices</h2>
+    <h2>suas escolhas</h2>
     <p>
-      To have your test results deleted, <Link to="/contact">contact us</Link> with the name you used and roughly when
-      you took the test, and we'll remove them.
+      para pedir a excluso do resultado do teste, <Link to="/contact">fale com a gente</Link> e informe o nome usado
+      e uma data aproximada. voc tambm pode mudar sua escolha sobre mtricas aqui ou na faixa de privacidade.
     </p>
 
-    <h2>Not a clinical assessment</h2>
+    <h2>não  uma avaliao clnica</h2>
     <p>
-      TrueYouTeller is for fun and self-reflection. It is not a psychological or medical assessment.
+      o TrueYouTeller  uma experincia de entretenimento e reflexo. não  uma avaliao psicolgica ou mdica.
     </p>
   </div>
 );

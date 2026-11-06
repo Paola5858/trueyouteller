@@ -12,8 +12,8 @@ import '../styles/Social.css';
 
 export const meta = () =>
   buildMeta({
-    title: 'My Personality Card Deck | TrueYouTeller',
-    description: 'Collect personality and quiz cards. Rare types are Legendary!',
+    title: 'minha coleo de cartas | TrueYouTeller',
+    description: 'colecione cartas de personalidade e dos testes rpidos.',
     path: '/cards',
     noindex: true,
   });
@@ -40,26 +40,26 @@ const CardsPage = () => {
 
   return (
     <div className="container section cards-page">
-      <h1 className="page-title">My Card Deck</h1>
+      <h1 className="page-title">minha coleo de cartas</h1>
       <p className="types-intro">
-        Every result you get becomes a collectible card. Personality cards are rarer the less common the type is.
+        cada resultado vira uma carta para colecionar. quanto mais raro o perfil, mais difcil encontrar sua carta.
         {collected && (
           <>
             {' '}
-            You've collected <strong>{count}</strong> of {total}.
+            voc j tem <strong>{count}</strong> de {total} cartas.
           </>
         )}
       </p>
       {collected && count === 0 && (
         <div className="type-cta">
-          <p>Your deck is empty! Take the test or a quiz to get your first card.</p>
-          <Link to="/test" className="btn btn-primary">Take the Free Test</Link>
+          <p>sua coleo ainda est vazia. faa um teste para ganhar a primeira carta.</p>
+          <Link to="/test" className="btn btn-primary">fazer o teste grátis</Link>
         </div>
       )}
 
       <section aria-labelledby="type-cards">
-        <h2 id="type-cards">Personality cards</h2>
-        <p>You can unlock other types by retaking the test later; people change!</p>
+        <h2 id="type-cards">cartas de personalidade</h2>
+        <p>refaa o teste quando quiser para descobrir outros perfis. a gente muda com o tempo!</p>
         <div className="card-grid">
           {typeCodes.map((code) => (
             <TradingCard
@@ -73,13 +73,13 @@ const CardsPage = () => {
       </section>
 
       <section aria-labelledby="quiz-cards">
-        <h2 id="quiz-cards">Bonus quiz cards</h2>
+        <h2 id="quiz-cards">cartas dos testes rpidos</h2>
         <div className="card-grid">
           {quizCards.map(({ key, quiz, outcome }) =>
             collected?.has(key) ? (
               <TradingCard key={key} quizOutcome={outcome} quizTitle={quiz.shortTitle} />
             ) : (
-              <Link key={key} to={`/quizzes/${quiz.slug}`} className="card-link" aria-label={`Play ${quiz.shortTitle} to unlock`}>
+              <Link key={key} to={`/quizzes/${quiz.slug}`} className="card-link" aria-label={`fazer ${quiz.shortTitle} para desbloquear`}>
                 <TradingCard quizOutcome={outcome} quizTitle={quiz.shortTitle} locked />
               </Link>
             )

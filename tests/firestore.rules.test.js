@@ -91,6 +91,12 @@ describe('mirrors', () => {
     );
     await assertFails(setDoc(doc(db, 'mirrors/nope/ratings/a'), { answers: Array(16).fill(1), createdAt: now() }));
   });
+  test('ratings: answers outside the Likert scale are rejected', async () => {
+    await seed('mirrors/m1', { ownerName: 'Sam' });
+    await assertFails(
+      setDoc(doc(db, 'mirrors/m1/ratings/a'), { answers: [...Array(15).fill(1), 3], createdAt: now() })
+    );
+  });
   test('ratings cannot be edited or deleted', async () => {
     await seed('mirrors/m1', { ownerName: 'Sam' });
     await seed('mirrors/m1/ratings/a', { answers: Array(16).fill(1) });

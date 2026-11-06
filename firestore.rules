@@ -8,6 +8,9 @@ service cloud.firestore {
     function isType(v) { return v is string && v.matches('^[EI][SN][TF][JP]$'); }
     function shortText(v, max) { return v is string && v.size() > 0 && v.size() <= max; }
     function stampedNow() { return data().createdAt == request.time; }
+    function isLikertAnswers(answers) {
+      return answers is list && answers.size() == 16 && answers.hasOnly([-2, -1, 0, 1, 2]);
+    }
     // { IE, SN, TF, JP } each 0-100
     function isPercentages(p) {
       return p is map && p.keys().hasOnly(['IE', 'SN', 'TF', 'JP']) && p.keys().hasAll(['IE', 'SN', 'TF', 'JP'])
@@ -50,8 +53,7 @@ service cloud.firestore {
         // 16 Likert answers (-2..2). No name is stored, so ratings stay anonymous.
         allow create: if exists(/databases/$(database)/documents/mirrors/$(id))
                       && data().keys().hasOnly(['answers', 'createdAt'])
-                      && data().answers is list
-                      && data().answers.size() == 16
+                      && isLikertAnswers(data().answers)
                       && stampedNow();
         allow read: if true;
       }

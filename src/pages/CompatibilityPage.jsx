@@ -17,31 +17,31 @@ const OG_IMAGE = `${SITE_URL}/og/compatibility.png`;
 const bareName = (type) => type.name.replace(/^The /, '');
 
 const crumbsFor = (pair) => [
-  { name: 'Home', path: '/' },
-  { name: 'Compatibility', path: '/compatibility' },
+  { name: 'início', path: '/' },
+  { name: 'compatibilidade', path: '/compatibility' },
   ...(pair ? [{ name: `${pair[0]} & ${pair[1]}`, path: `/compatibility/${pairSlug(pair[0], pair[1])}` }] : []),
 ];
 
 export const meta = ({ params }) => {
   if (!params.pair) {
     return buildMeta({
-      title: 'Personality Type Compatibility Checker (All 16 Types) | TrueYouTeller',
+      title: 'compatibilidade entre tipos de personalidade | TrueYouTeller',
       description:
-        'Check the compatibility between any two of the 16 personality types. See your match score, strengths, friction points and tips for love, friendship and work.',
+        'compare dois dos 16 perfis de personalidade e veja afinidades, possíveis desafios e dicas para a convivência.',
       path: '/compatibility',
       image: OG_IMAGE,
       jsonLd: [breadcrumbJsonLd(crumbsFor(null))],
     });
   }
   const pair = parsePairSlug(params.pair);
-  if (!pair) return [{ title: 'Compatibility Not Found | TrueYouTeller' }, { name: 'robots', content: 'noindex' }];
-  const { a, b, score, tier } = getCompatibility(...pair);
+  if (!pair) return [{ title: 'compatibilidade não encontrada | TrueYouTeller' }, { name: 'robots', content: 'noindex' }];
+  const { a, b, score } = getCompatibility(...pair);
   const same = a.code === b.code;
   return buildMeta({
-    title: same
-      ? `${a.code} and ${b.code} Compatibility: Two ${bareName(a)}s (${score}%) | TrueYouTeller`
-      : `${a.code} and ${b.code} Compatibility: ${score}% ${tier.label} | TrueYouTeller`,
-    description: `How compatible are ${a.code} (${a.name}) and ${b.code} (${b.name})? A ${score}% "${tier.label}": see their strengths together, friction points and tips for love, friendship and work.`,
+      title: same
+      ? `compatibilidade ${a.code} e ${b.code}: dois perfis ${bareName(a)} (${score}%) | TrueYouTeller`
+      : `compatibilidade ${a.code} e ${b.code}: ${score}% | TrueYouTeller`,
+    description: `como ${a.code} (${a.name}) e ${b.code} (${b.name}) combinam? veja afinidades, desafios e dicas para a convivência.`,
     path: `/compatibility/${pairSlug(a.code, b.code)}`,
     image: OG_IMAGE,
     type: 'article',
@@ -53,10 +53,10 @@ const TypeSelect = ({ id, label, value, onChange }) => (
   <div className="compat-select">
     <label htmlFor={id}>{label}</label>
     <select id={id} value={value} onChange={(e) => onChange(e.target.value)}>
-      <option value="">Choose a type</option>
+      <option value="">escolha um tipo</option>
       {TYPE_CODES.map((code) => (
         <option key={code} value={code}>
-          {code} · {PERSONALITY_TYPES[code].name}
+          {code} ? {PERSONALITY_TYPES[code].name}
         </option>
       ))}
     </select>
@@ -84,11 +84,11 @@ const Picker = ({ initialA = '', initialB = '' }) => {
 
   return (
     <form className="compat-picker" onSubmit={submit}>
-      <TypeSelect id="type-a" label="Your type" value={a} onChange={setA} />
+      <TypeSelect id="type-a" label="seu tipo" value={a} onChange={setA} />
       <span className="compat-plus" aria-hidden="true">💞</span>
-      <TypeSelect id="type-b" label="Their type" value={b} onChange={setB} />
+      <TypeSelect id="type-b" label="tipo da outra pessoa" value={b} onChange={setB} />
       <button type="submit" className="btn btn-primary" disabled={!a || !b}>
-        Check compatibility
+        comparar perfis
       </button>
     </form>
   );
@@ -108,19 +108,20 @@ const PairView = ({ pair }) => {
     awardBadge('matchmaker');
     track('compat_check', { pair: pairSlug(a.code, b.code), score });
   }, [a.code, b.code, score]);
+  const sameCount = axes.filter(function(x){ return x.same; }).length;
   const others = topMatches(a.code, 4).filter(({ code }) => code !== b.code).slice(0, 3);
 
   return (
     <>
       <header className="compat-hero">
-        <h1 className="page-title">{`${a.code} & ${b.code} Compatibility`}</h1>
+        <h1 className="page-title">{"compatibilidade: " + a.code + " e " + b.code}</h1>
         <div className="compat-pair">
           <TypeBadge type={a} />
           <div
             className="compat-score"
             style={{ '--score': score }}
             role="img"
-            aria-label={`${score}% compatibility`}
+            aria-label={score + "% de compatibilidade"}
           >
             <span className="compat-score-number">{score}%</span>
             <span className="compat-score-tier">
@@ -130,9 +131,10 @@ const PairView = ({ pair }) => {
           <TypeBadge type={b} />
         </div>
         <p className="compat-summary">
-          {a.code === b.code
-            ? `Two ${bareName(a)}s understand each other instantly. Here's what that looks like day to day, and where to stay careful.`
-            : `${a.name} (${a.code}) and ${b.name.replace(/^The /, 'the ')} (${b.code}) share ${axes.filter((x) => x.same).length} of 4 preferences. Here's how that plays out in love, friendship and work.`}
+          {a.code === b.code ?
+            "dois perfis " + bareName(a) + " podem se entender de um jeito especial. veja como isso aparece no dia a dia e onde vale ter atenção."
+            : a.name + " (" + a.code + ") e " + b.name + " (" + b.code + ") compartilham " + sameCount + " de 4 preferências. veja como isso pode aparecer nas relações e no trabalho."
+          }
         </p>
       </header>
 
@@ -146,38 +148,38 @@ const PairView = ({ pair }) => {
               {axis.title}
             </h2>
             <p>
-              <strong>✅ Works well:</strong> {axis.strength}
+              <strong>✅ ponto forte:</strong> {axis.strength}
             </p>
             <p>
-              <strong>⚠️ Watch out:</strong> {axis.friction}
+              <strong>⚠️ vale observar:</strong> {axis.friction}
             </p>
             <p>
-              <strong>💡 Try this:</strong> {axis.tip}
+              <strong>💡 uma ideia:</strong> {axis.tip}
             </p>
           </section>
         ))}
       </div>
 
       <div className="type-cta">
-        <p>Not sure of your type? Find out in about 10 minutes, then send the test to them.</p>
-        <Link to="/test" className="btn btn-primary">Take the Free Personality Test</Link>
+        <p>ainda não sabe seu tipo? descubra em cerca de 10 minutos e convide a outra pessoa para fazer o teste.</p>
+        <Link to="/test" className="btn btn-primary">fazer o teste grátis</Link>
       </div>
 
       <section className="result-card" aria-labelledby="more-matches">
-        <h2 id="more-matches">More {a.code} matches</h2>
+        <h2 id="more-matches">mais combinações para {a.code}</h2>
         <div className="match-grid">
           {others.map(({ code, score: otherScore }) => (
             <Link key={code} to={`/compatibility/${pairSlug(a.code, code)}`} className="match-card">
               <span className="match-code">{a.code} &amp; {code}</span>
               <span className="match-name">{PERSONALITY_TYPES[code].name}</span>
-              <span className="match-score">{otherScore}% match</span>
+              <span className="match-score">{otherScore}% de compatibilidade</span>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="result-card" aria-labelledby="check-another">
-        <h2 id="check-another">Check another pair</h2>
+        <h2 id="check-another">comparar outro par</h2>
         <Picker key={`${a.code}-${b.code}`} initialA={a.code} />
       </section>
     </>
@@ -198,8 +200,8 @@ const CompatibilityPage = () => {
   if (pairParam && !pair) {
     return (
       <div className="container section compat-page">
-        <h1 className="page-title">Hmm, we couldn't find that pair</h1>
-        <p>Pick two types below to check their compatibility.</p>
+        <h1 className="page-title">não encontramos esse par</h1>
+        <p>escolha dois tipos abaixo para comparar os perfis.</p>
         <Picker />
       </div>
     );
@@ -212,10 +214,10 @@ const CompatibilityPage = () => {
         <PairView pair={pair} />
       ) : (
         <>
-          <h1 className="page-title">Personality Compatibility Checker</h1>
+          <h1 className="page-title">compatibilidade entre perfis</h1>
           <p className="types-intro">
-            Pick two of the 16 personality types to see how well they match, what they do well together, and where
-            they might clash. Don't know your type? <Link to="/test">Take the free test</Link>.
+            escolha dois dos 16 tipos para ver onde combinam e em que pontos podem pensar diferente. ainda não sabe o seu?{' '}
+            <Link to="/test">fa?a o teste grátis</Link>.
           </p>
           <Picker />
         </>
