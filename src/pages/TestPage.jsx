@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { questions as classicQuestions, answerOptions, QUESTION_VERSION } from '../data/questions';
 import { scenarios, SCENARIO_VERSION } from '../data/scenarios';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Dhruv from '../images/creators/dhruv.webp';
 import Sanaj from '../images/creators/sanaj.webp';
 import { buildMeta } from '../utils/seo';

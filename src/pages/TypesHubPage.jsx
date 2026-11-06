@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 import { PERSONALITY_TYPES } from '../data/personalityTypes';
 import { getAnimalImage } from '../utils/images';

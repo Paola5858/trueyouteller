@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { PERSONALITY_TYPES } from '../data/personalityTypes';
 import { loadLastResult, setPendingJoin } from '../utils/storage';

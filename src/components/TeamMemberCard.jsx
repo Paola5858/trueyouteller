@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/TeamMemberCard.css';
 
 const TeamMemberCard = ({ name, role, imageUrl, githubUrl, linkedinUrl }) => {

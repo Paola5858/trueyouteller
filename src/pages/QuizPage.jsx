@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { FaWhatsapp, FaXTwitter, FaLink, FaShareNodes } from 'react-icons/fa6';
 import { getQuiz, QUIZZES } from '../data/quizzes';

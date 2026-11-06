@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaStar, FaBriefcase, FaHeart, FaUsers, FaFilm } from 'react-icons/fa';
 import { getCelebrityImage } from '../utils/images';
 import '../styles/DetailedResultsPage.css';

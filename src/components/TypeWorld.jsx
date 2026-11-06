@@ -1,4 +1,3 @@
-import React from 'react';
 import { spotifyLink, TYPE_WORLD } from '../data/typeWorld';
 import '../styles/Cards.css';
 

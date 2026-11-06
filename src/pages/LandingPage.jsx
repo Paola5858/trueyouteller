@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/LandingPage.css';
 import { Link } from 'react-router';
 import { FaPencilAlt, FaHeart, FaPaintBrush, FaLaughBeam, FaBolt } from 'react-icons/fa';

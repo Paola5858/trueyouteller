@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { PERSONALITY_TYPES } from '../data/personalityTypes';
 import { getCompatibility, pairSlug, parsePairSlug, topMatches, TYPE_CODES } from '../data/compatibility';

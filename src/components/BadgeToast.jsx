@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Pops up for a few seconds whenever awardBadge() unlocks something new.
 const BadgeToast = () => {

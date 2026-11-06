@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router';
 import { PERSONALITY_TYPES } from '../data/personalityTypes';
 import { axisBreakdown, decodePercentages } from '../utils/scoring';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 import { QUIZZES } from '../data/quizzes';
 import { breadcrumbJsonLd, buildMeta, SITE_URL } from '../utils/seo';

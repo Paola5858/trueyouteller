@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaWhatsapp, FaXTwitter, FaFacebook, FaLink, FaDownload, FaFilePdf, FaShareNodes } from 'react-icons/fa6';
 import { copyText, downloadBlob, downloadProfilePdf, nativeShare, shareLinks } from '../utils/share';
 import { drawShareCard } from '../utils/shareCard';

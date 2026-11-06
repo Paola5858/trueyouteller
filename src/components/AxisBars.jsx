@@ -1,4 +1,3 @@
-import React from 'react';
 
 const LETTER_NAMES = {
   I: 'Introverted', E: 'Extraverted',

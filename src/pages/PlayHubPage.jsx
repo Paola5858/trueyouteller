@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { createShared } from '../firebase/social';
 import { loadLastResult, rememberOwned } from '../utils/storage';

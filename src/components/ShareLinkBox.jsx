@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaLink, FaShareNodes, FaWhatsapp } from 'react-icons/fa6';
 import { copyText, nativeShare } from '../utils/share';
 import { track } from '../utils/analytics';

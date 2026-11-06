@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 
 // items: [{ name, path }], last item is the current page.

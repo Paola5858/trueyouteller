@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 import friendsImage from '../images/miniGames/friends.webp';
 import insideOutImage from '../images/miniGames/insideout.webp';

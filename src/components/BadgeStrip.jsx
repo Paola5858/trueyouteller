@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BADGES, loadBadges } from '../utils/badges';
 
 // "seus distintivos" strip on the home page. Badges live in the browser, so this renders after mount.

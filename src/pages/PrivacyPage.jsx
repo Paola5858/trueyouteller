@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 import { buildMeta } from '../utils/seo';
 import AnalyticsPreference from '../components/AnalyticsPreference';

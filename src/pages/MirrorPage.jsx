@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { MIRROR_MIN_RATINGS, MIRROR_QUESTIONS } from '../data/mirrorQuestions';
 import { answerOptions } from '../data/questions';

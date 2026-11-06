@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router';
 
 // Loading / not found / error states for link-based pages.

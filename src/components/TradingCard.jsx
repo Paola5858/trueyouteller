@@ -1,4 +1,3 @@
-import React from 'react';
 import { getAnimalImage } from '../utils/images';
 import { rarityFor, BONUS_TIER } from '../data/typeRarity';
 import '../styles/Cards.css';

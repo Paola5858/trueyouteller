@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { PERSONALITY_TYPES } from '../data/personalityTypes';
 import { addEntry } from '../firebase/social';
